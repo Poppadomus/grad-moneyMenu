@@ -1,0 +1,4712 @@
+#include "modules\grad-moneymenu\grad_moneymenu.hpp"
+#include "modules\grad-listBuymenu\grad_listBuymenu.hpp"
+enableDebugConsole = 1;
+
+class CfgFunctions {
+    #include "modules\grad-moneymenu\cfgFunctions.hpp"
+    #include "modules\grad-persistence\cfgFunctions.hpp"
+    #include "modules\grad-listBuymenu\cfgFunctions.hpp"
+};
+
+class CfgGradMoneymenu {
+    canGiveDefault = 1;                                                    
+    canTransferToSidesDefault[] = {"east","west","independent","civilian"};
+    canTakeFromDeadDefault = 1;        
+    canSendDirectlyDefault = 0;                                    
+    canTakeFromSurrenderedDefault = 1;                                     
+    startMoney = 10000;                                                        
+    startBankBalance = 10000;                                                  
+    playersLoseMoneyOnDeath = 1;
+    atmObjects[] = {"Land_ATM_01_malden_F","Land_ATM_02_malden_F","Land_Atm_02_F","Land_Atm_01_F"};                                      
+};
+
+class CfgGradPersistence {
+    missionTag = "my_persistent_mission";
+    loadOnMissionStart = 1;
+    missionWaitCondition = "true";
+    playerWaitCondition = "true";
+
+    saveUnits = 2;
+    saveVehicles = 1;
+    saveContainers = 1;
+    saveStatics = 1;
+    saveGradFortificationsStatics = 3;
+    saveMarkers = 0;
+    saveTasks = 0;
+    saveTriggers = 0;
+
+    savePlayerInventory = 1;
+    savePlayerDamage = 0;
+    savePlayerPosition = 0;
+    savePlayerMoney = 1;
+
+    saveTeamAccounts = 0;
+
+    blacklist[] = {
+        "B_Truck_01_mover_F",
+        "MapBoard_seismic_F"
+    };
+
+    class customVariables {
+        class var1 {
+            varName = "mcd_myVariable_test";
+            varNamespace = "mission";
+            public = 0;
+        };
+        class var2 {
+            varName = "mcd_myPublicVariableOnAUnit_test";
+            varNamespace = "unit";
+            public = 1;
+        };
+    };
+};
+
+class CfgGradBuymenu {
+    vehicleMarkers = 1;
+    tracking = 1;
+    trackingTag = "my_persistent_mission";
+
+    class Gear {
+        class Rifles {
+            displayName = "Rifle Shop";
+            kindOf = "Weapons";
+
+            class arifle_AK12_F {
+                displayName = "AK-12 7.62 mm";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_AK12_arid_f {
+                displayName = "AK-12 7.62 mm (Arid)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_AK12_lush_f {
+                displayName = "AK-12 7.62 mm (Lush)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_AK12_GL_F {
+                displayName = "AK-12 GL 7.62 mm";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_AK12_GL_arid_F {
+                displayName = "AK-12 GL 7.62 mm (Arid)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_AK12_GL_lush_F {
+                displayName = "AK-12 GL 7.62 mm (Lush)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_AKM_F {
+                displayName = "AKM 7.62 mm";
+                price = 1000;
+                stock = 999999;
+            };
+            class arifle_AKS_F {
+                displayName = "AKS-74U 5.45 mm";
+                price = 900;
+                stock = 999999;
+            };
+            class arifle_AK12U_F {
+                displayName = "AK-12U 7.62 mm";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_AK12U_arid_f {
+                displayName = "AK-12U 7.62 mm (Arid)";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_AK12U_lush_f {
+                displayName = "AK-12U 7.62 mm (Lush)";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_CTAR_blk_F {
+                displayName = "CAR-95 5.8 mm (Black)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_CTAR_ghex_F {
+                displayName = "CAR-95 5.8 mm (Green Hex)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_CTAR_hex_F {
+                displayName = "CAR-95 5.8 mm (Hex)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_CTAR_GL_blk_F {
+                displayName = "CAR-95 GL 5.8 mm (Black)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_CTAR_GL_ghex_F {
+                displayName = "CAR-95 GL 5.8 mm (Green Hex)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_CTAR_GL_hex_F {
+                displayName = "CAR-95 GL 5.8 mm (Hex)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_CTARS_blk_F {
+                displayName = "CAR-95-1 5.8 mm (Black)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_CTARS_ghex_F {
+                displayName = "CAR-95-1 5.8 mm (Green Hex)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_CTARS_hex_F {
+                displayName = "CAR-95-1 5.8 mm (Hex)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_Katiba_F {
+                displayName = "Katiba 6.5 mm";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_Katiba_C_F {
+                displayName = "Katiba Carbine 6.5 mm";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_Katiba_GL_F {
+                displayName = "Katiba GL 6.5 mm";
+                price = 1500;
+                stock = 999999;
+            };
+            class sgun_HunterShotgun_01_F {
+                displayName = "Kozlice 12G";
+                price = 800;
+                stock = 999999;
+            };
+            class sgun_HunterShotgun_01_sawedoff_F {
+                displayName = "Kozlice 12G (Sawed-Off)";
+                price = 600;
+                stock = 999999;
+            };
+            class arifle_Mk20_plain_F {
+                displayName = "Mk20 5.56 mm";
+                price = 1000;
+                stock = 999999;
+            };
+            class arifle_Mk20_F {
+                displayName = "Mk20 5.56 mm (Camo)";
+                price = 1000;
+                stock = 999999;
+            };
+            class arifle_Mk20_GL_plain_F {
+                displayName = "Mk20 GL 5.56 mm";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_Mk20_GL_F {
+                displayName = "Mk20 GL 5.56 mm (Camo)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_Mk20C_plain_F {
+                displayName = "Mk20C 5.56 mm";
+                price = 900;
+                stock = 999999;
+            };
+            class arifle_Mk20C_F {
+                displayName = "Mk20C 5.56 mm (Camo)";
+                price = 900;
+                stock = 999999;
+            };
+            class arifle_MX_GL_F {
+                displayName = "MX 3GL 6.5 mm";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MX_GL_Black_F {
+                displayName = "MX 3GL 6.5 mm (Black)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MX_GL_khk_F {
+                displayName = "MX 3GL 6.5 mm (Khaki)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MX_F {
+                displayName = "MX 6.5 mm";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_MX_Black_F {
+                displayName = "MX 6.5 mm (Black)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_MX_khk_F {
+                displayName = "MX 6.5 mm (Khaki)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_MXC_F {
+                displayName = "MXC 6.5 mm";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_MXC_Black_F {
+                displayName = "MXC 6.5 mm (Black)";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_MXC_khk_F {
+                displayName = "MXC 6.5 mm (Khaki)";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_MXM_F {
+                displayName = "MXM 6.5 mm";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_MXM_Black_F {
+                displayName = "MXM 6.5 mm (Black)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_MXM_khk_F {
+                displayName = "MXM 6.5 mm (Khaki)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_MSBS65_F {
+                displayName = "Promet 6.5 mm";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_MSBS65_black_F {
+                displayName = "Promet 6.5 mm (Black)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_MSBS65_camo_F {
+                displayName = "Promet 6.5 mm (Camo)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_MSBS65_sand_F {
+                displayName = "Promet 6.5 mm (Sand)";
+                price = 1300;
+                stock = 999999;
+            };
+            class arifle_MSBS65_GL_F {
+                displayName = "Promet GL 6.5 mm";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_MSBS65_GL_black_F {
+                displayName = "Promet GL 6.5 mm (Black)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_MSBS65_GL_camo_F {
+                displayName = "Promet GL 6.5 mm (Camo)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_MSBS65_GL_sand_F {
+                displayName = "Promet GL 6.5 mm (Sand)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_MSBS65_Mark_F {
+                displayName = "Promet MR 6.5 mm";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MSBS65_Mark_black_F {
+                displayName = "Promet MR 6.5 mm (Black)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MSBS65_Mark_camo_F {
+                displayName = "Promet MR 6.5 mm (Camo)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MSBS65_Mark_sand_F {
+                displayName = "Promet MR 6.5 mm (Sand)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_MSBS65_UBS_F {
+                displayName = "Promet SG 6.5 mm";
+                price = 1700;
+                stock = 999999;
+            };
+            class arifle_MSBS65_UBS_black_F {
+                displayName = "Promet SG 6.5 mm (Black)";
+                price = 1700;
+                stock = 999999;
+            };
+            class arifle_MSBS65_UBS_camo_F {
+                displayName = "Promet SG 6.5 mm (Camo)";
+                price = 1700;
+                stock = 999999;
+            };
+            class arifle_MSBS65_UBS_sand_F {
+                displayName = "Promet SG 6.5 mm (Sand)";
+                price = 1700;
+                stock = 999999;
+            };
+            class arifle_RPK12_F {
+                displayName = "RPK-12 7.62 mm";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_RPK12_arid_f {
+                displayName = "RPK-12 7.62 mm (Arid)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_RPK12_lush_f {
+                displayName = "RPK-12 7.62 mm (Lush)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_SDAR_F {
+                displayName = "SDAR 5.56 mm";
+                price = 1000;
+                stock = 999999;
+            };
+            class arifle_SPAR_01_blk_F {
+                displayName = "SPAR-16 5.56 mm (Black)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_SPAR_01_khk_F {
+                displayName = "SPAR-16 5.56 mm (Khaki)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_SPAR_01_snd_F {
+                displayName = "SPAR-16 5.56 mm (Sand)";
+                price = 1200;
+                stock = 999999;
+            };
+            class arifle_SPAR_01_GL_blk_F {
+                displayName = "SPAR-16 GL 5.56 mm (Black)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_SPAR_01_GL_khk_F {
+                displayName = "SPAR-16 GL 5.56 mm (Khaki)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_SPAR_01_GL_snd_F {
+                displayName = "SPAR-16 GL 5.56 mm (Sand)";
+                price = 1500;
+                stock = 999999;
+            };
+            class arifle_SPAR_02_blk_F {
+                displayName = "SPAR-16S 5.56 mm (Black)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_SPAR_02_khk_F {
+                displayName = "SPAR-16S 5.56 mm (Khaki)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_SPAR_02_snd_F {
+                displayName = "SPAR-16S 5.56 mm (Sand)";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_SPAR_03_blk_F {
+                displayName = "SPAR-17 7.62 mm (Black)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_SPAR_03_khk_F {
+                displayName = "SPAR-17 7.62 mm (Khaki)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_SPAR_03_snd_F {
+                displayName = "SPAR-17 7.62 mm (Sand)";
+                price = 1600;
+                stock = 999999;
+            };
+            class arifle_TRG20_F {
+                displayName = "TRG-20 5.56 mm";
+                price = 1000;
+                stock = 999999;
+            };
+            class arifle_TRG21_F {
+                displayName = "TRG-21 5.56 mm";
+                price = 1100;
+                stock = 999999;
+            };
+            class arifle_TRG21_GL_F {
+                displayName = "TRG-21 GL 5.56 mm";
+                price = 1400;
+                stock = 999999;
+            };
+            class arifle_ARX_blk_F {
+                displayName = "Type 115 6.5 mm (Black)";
+                price = 1800;
+                stock = 999999;
+            };
+            class arifle_ARX_ghex_F {
+                displayName = "Type 115 6.5 mm (Green Hex)";
+                price = 1800;
+                stock = 999999;
+            };
+            class arifle_ARX_hex_F {
+                displayName = "Type 115 6.5 mm (Hex)";
+                price = 1800;
+                stock = 999999;
+            };
+        };
+
+        class SMGs {
+            displayName = "SMG Shop";
+            kindOf = "Weapons";
+
+            class SMG_03_black {
+                displayName = "P90 Black 5.7mm";
+                price = 8000;
+                stock = 999999;
+            };
+            class SMG_03_camo {
+                displayName = "P90 Camo 5.7mm";
+                price = 8200;
+                stock = 999999;
+            };
+            class SMG_03_hex {
+                displayName = "P90 Hex 5.7mm";
+                price = 8200;
+                stock = 999999;
+            };
+            class SMG_03_khaki {
+                displayName = "P90 Khaki 5.7mm";
+                price = 8200;
+                stock = 999999;
+            };
+            class SMG_03_TR_black {
+                displayName = "P90 TR Black 5.7mm";
+                price = 8500;
+                stock = 999999;
+            };
+            class SMG_03_TR_camo {
+                displayName = "P90 TR Camo 5.7mm";
+                price = 8700;
+                stock = 999999;
+            };
+            class SMG_03_TR_hex {
+                displayName = "P90 TR Hex 5.7mm";
+                price = 8700;
+                stock = 999999;
+            };
+            class SMG_03_TR_khaki {
+                displayName = "P90 TR Khaki 5.7mm";
+                price = 8700;
+                stock = 999999;
+            };
+            class SMG_03C_black {
+                displayName = "P90C Black 5.7mm";
+                price = 7500;
+                stock = 999999;
+            };
+            class SMG_03C_camo {
+                displayName = "P90C Camo 5.7mm";
+                price = 7700;
+                stock = 999999;
+            };
+            class SMG_03C_hex {
+                displayName = "P90C Hex 5.7mm";
+                price = 7700;
+                stock = 999999;
+            };
+            class SMG_03C_khaki {
+                displayName = "P90C Khaki 5.7mm";
+                price = 7700;
+                stock = 999999;
+            };
+            class SMG_03C_TR_black {
+                displayName = "P90C TR Black 5.7mm";
+                price = 8000;
+                stock = 999999;
+            };
+            class SMG_03C_TR_camo {
+                displayName = "P90C TR Camo 5.7mm";
+                price = 8200;
+                stock = 999999;
+            };
+            class SMG_03C_TR_hex {
+                displayName = "P90C TR Hex 5.7mm";
+                price = 8200;
+                stock = 999999;
+            };
+            class SMG_03C_TR_khaki {
+                displayName = "P90C TR Khaki 5.7mm";
+                price = 8200;
+                stock = 999999;
+            };
+            class hgun_PDW2000_F {
+                displayName = "PDW2000 9mm";
+                price = 5000;
+                stock = 999999;
+            };
+            class SMG_05_F {
+                displayName = "Protector 9mm";
+                price = 5500;
+                stock = 999999;
+            };
+            class SMG_02_F {
+                displayName = "Sting 9mm";
+                price = 6000;
+                stock = 999999;
+            };
+            class SMG_01_F {
+                displayName = "Vector .45 ACP";
+                price = 7000;
+                stock = 999999;
+            };
+        };
+
+        class LMGs {
+            displayName = "LMG Shop";
+            kindOf = "Weapons";
+
+            class LMG_03_F {
+                displayName = "LMG-3 6.5mm";
+                price = 15000;
+                stock = 999999;
+            };
+            class LMG_Mk200_F {
+                displayName = "Mk200 6.5mm";
+                price = 18000;
+                stock = 999999;
+            };
+            class LMG_Mk200_black_F {
+                displayName = "Mk200 Black 6.5mm";
+                price = 18500;
+                stock = 999999;
+            };
+            class arifle_MX_SW_F {
+                displayName = "MX SW 6.5mm";
+                price = 12000;
+                stock = 999999;
+            };
+            class arifle_MX_SW_Black_F {
+                displayName = "MX SW Black 6.5mm";
+                price = 12500;
+                stock = 999999;
+            };
+            class arifle_MX_SW_khk_F {
+                displayName = "MX SW Khaki 6.5mm";
+                price = 12500;
+                stock = 999999;
+            };
+            class MMG_01_hex_F {
+                displayName = "Navid Hex 9.3mm";
+                price = 25000;
+                stock = 999999;
+            };
+            class MMG_01_tan_F {
+                displayName = "Navid Tan 9.3mm";
+                price = 25000;
+                stock = 999999;
+            };
+            class MMG_02_black_F {
+                displayName = "SPMG Black .338";
+                price = 22000;
+                stock = 999999;
+            };
+            class MMG_02_camo_F {
+                displayName = "SPMG Camo .338";
+                price = 22000;
+                stock = 999999;
+            };
+            class MMG_02_sand_F {
+                displayName = "SPMG Sand .338";
+                price = 22000;
+                stock = 999999;
+            };
+            class LMG_Zafir_F {
+                displayName = "Zafir 7.62mm";
+                price = 20000;
+                stock = 999999;
+            };
+        };
+
+        class Snipers {
+            displayName = "Sniper Shop";
+            kindOf = "Weapons";
+
+            class srifle_DMR_04_F {
+                displayName = "ASP-1 Kir 12.7mm";
+                price = 22000;
+                stock = 999999;
+            };
+            class srifle_DMR_04_Tan_F {
+                displayName = "ASP-1 Kir Tan 12.7mm";
+                price = 22500;
+                stock = 999999;
+            };
+            class srifle_DMR_07_blk_F {
+                displayName = "CMR-76 Black 6.5mm";
+                price = 18000;
+                stock = 999999;
+            };
+            class srifle_DMR_07_ghex_F {
+                displayName = "CMR-76 GHEX 6.5mm";
+                price = 18000;
+                stock = 999999;
+            };
+            class srifle_DMR_07_hex_F {
+                displayName = "CMR-76 Hex 6.5mm";
+                price = 18000;
+                stock = 999999;
+            };
+            class srifle_DMR_05_blk_F {
+                displayName = "Cyrus Black 9.3mm";
+                price = 24000;
+                stock = 999999;
+            };
+            class srifle_DMR_05_hex_F {
+                displayName = "Cyrus Hex 9.3mm";
+                price = 24000;
+                stock = 999999;
+            };
+            class srifle_DMR_05_tan_f {
+                displayName = "Cyrus Tan 9.3mm";
+                price = 24000;
+                stock = 999999;
+            };
+            class srifle_GM6_F {
+                displayName = "GM6 Lynx 12.7mm";
+                price = 32000;
+                stock = 999999;
+            };
+            class srifle_GM6_camo_F {
+                displayName = "GM6 Lynx Camo 12.7mm";
+                price = 32500;
+                stock = 999999;
+            };
+            class srifle_GM6_ghex_F {
+                displayName = "GM6 Lynx GHEX 12.7mm";
+                price = 32500;
+                stock = 999999;
+            };
+            class srifle_LRR_F {
+                displayName = "M320 LRR .408";
+                price = 30000;
+                stock = 999999;
+            };
+            class srifle_LRR_camo_F {
+                displayName = "M320 LRR Camo .408";
+                price = 30500;
+                stock = 999999;
+            };
+            class srifle_LRR_tna_F {
+                displayName = "M320 LRR Tropic .408";
+                price = 30500;
+                stock = 999999;
+            };
+            class srifle_DMR_02_F {
+                displayName = "MAR-10 .338";
+                price = 28000;
+                stock = 999999;
+            };
+            class srifle_DMR_02_camo_F {
+                displayName = "MAR-10 Camo .338";
+                price = 28500;
+                stock = 999999;
+            };
+            class srifle_DMR_02_sniper_F {
+                displayName = "MAR-10 Sand .338";
+                price = 28500;
+                stock = 999999;
+            };
+            class srifle_DMR_03_F {
+                displayName = "Mk-I EMR 7.62mm";
+                price = 20000;
+                stock = 999999;
+            };
+            class srifle_DMR_03_multicam_F {
+                displayName = "Mk-I EMR Camo 7.62mm";
+                price = 20500;
+                stock = 999999;
+            };
+            class srifle_DMR_03_khaki_F {
+                displayName = "Mk-I EMR Khaki 7.62mm";
+                price = 20500;
+                stock = 999999;
+            };
+            class srifle_DMR_03_tan_F {
+                displayName = "Mk-I EMR Tan 7.62mm";
+                price = 20500;
+                stock = 999999;
+            };
+            class srifle_DMR_03_woodland_F {
+                displayName = "Mk-I EMR Woodland 7.62mm";
+                price = 20500;
+                stock = 999999;
+            };
+            class srifle_DMR_06_camo_F {
+                displayName = "Mk14 Camo 7.62mm";
+                price = 19000;
+                stock = 999999;
+            };
+            class srifle_DMR_06_hunter_F {
+                displayName = "Mk14 Hunter 7.62mm";
+                price = 19000;
+                stock = 999999;
+            };
+            class srifle_DMR_06_olive_F {
+                displayName = "Mk14 Olive 7.62mm";
+                price = 19000;
+                stock = 999999;
+            };
+            class srifle_EBR_F {
+                displayName = "Mk18 ABR 7.62mm";
+                price = 21000;
+                stock = 999999;
+            };
+            class srifle_DMR_01_F {
+                displayName = "Rahim 7.62mm";
+                price = 18500;
+                stock = 999999;
+            };
+        };
+
+        class Launchers {
+            displayName = "Launcher Shop";
+            kindOf = "Weapons";
+
+            class launch_O_Vorona_brown_F {
+                displayName = "9M135 Vorona (Brown)";
+                price = 15000;
+                stock = 999999;
+            };
+            class launch_O_Vorona_green_F {
+                displayName = "9M135 Vorona (Green)";
+                price = 15000;
+                stock = 999999;
+            };
+            class launch_MRAWS_green_rail_F {
+                displayName = "MAAWS Mk4 Mod 1 (Green)";
+                price = 12000;
+                stock = 999999;
+            };
+            class launch_MRAWS_olive_rail_F {
+                displayName = "MAAWS Mk4 Mod 1 (Olive)";
+                price = 12000;
+                stock = 999999;
+            };
+            class launch_MRAWS_sand_rail_F {
+                displayName = "MAAWS Mk4 Mod 1 (Sand)";
+                price = 12000;
+                stock = 999999;
+            };
+            class launch_MRAWS_green_F {
+                displayName = "MAAWS Mk4 Mod 0 (Green)";
+                price = 12000;
+                stock = 999999;
+            };
+            class launch_MRAWS_olive_F {
+                displayName = "MAAWS Mk4 Mod 0 (Olive)";
+                price = 12000;
+                stock = 999999;
+            };
+            class launch_MRAWS_sand_F {
+                displayName = "MAAWS Mk4 Mod 0 (Sand)";
+                price = 12000;
+                stock = 999999;
+            };
+            class launch_NLAW_F {
+                displayName = "PCML";
+                price = 8000;
+                stock = 999999;
+            };
+            class launch_RPG32_green_F {
+                displayName = "RPG-42 (Green)";
+                price = 10000;
+                stock = 999999;
+            };
+            class launch_RPG32_F {
+                displayName = "RPG-42";
+                price = 10000;
+                stock = 999999;
+            };
+            class launch_RPG32_ghex_F {
+                displayName = "RPG-42 (Green Hex)";
+                price = 10000;
+                stock = 999999;
+            };
+            class launch_RPG7_F {
+                displayName = "RPG-7";
+                price = 9000;
+                stock = 999999;
+            };
+            class launch_I_Titan_F {
+                displayName = "Titan MPRL (Digital)";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_I_Titan_eaf_F {
+                displayName = "Titan MPRL (Geometric)";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_O_Titan_ghex_F {
+                displayName = "Titan MPRL (Green Hex)";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_O_Titan_F {
+                displayName = "Titan MPRL (Hex)";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_B_Titan_olive_F {
+                displayName = "Titan MPRL (Olive)";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_B_Titan_F {
+                displayName = "Titan MPRL";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_B_Titan_tna_F {
+                displayName = "Titan MPRL (Tropic)";
+                price = 20000;
+                stock = 999999;
+            };
+            class launch_O_Titan_short_F {
+                displayName = "Titan MPRL Compact (Hex)";
+                price = 18000;
+                stock = 999999;
+            };
+            class launch_O_Titan_short_ghex_F {
+                displayName = "Titan MPRL Compact (Green Hex)";
+                price = 18000;
+                stock = 999999;
+            };
+            class launch_I_Titan_short_F {
+                displayName = "Titan MPRL Compact (Digital)";
+                price = 18000;
+                stock = 999999;
+            };
+            class launch_B_Titan_short_F {
+                displayName = "Titan MPRL Compact";
+                price = 18000;
+                stock = 999999;
+            };
+            class launch_B_Titan_short_tna_F {
+                displayName = "Titan MPRL Compact (Tropic)";
+                price = 18000;
+                stock = 999999;
+            };
+        };
+
+        class Magazines {
+            displayName = "Magazine/Ammo Shop";
+            kindOf = "Items";
+
+            class 30Rnd_762x39_AK12_Mag_F {
+                displayName = "30Rnd 7.62mm AK-12 Mag";
+                price = 50;
+                stock = 999999;
+            };
+            class 30Rnd_762x39_AK12_Arid_Mag_F {
+                displayName = "30Rnd 7.62mm AK-12 Arid Mag";
+                price = 50;
+                stock = 999999;
+            };
+            class 30Rnd_762x39_AK12_Lush_Mag_F {
+                displayName = "30Rnd 7.62mm AK-12 Lush Mag";
+                price = 50;
+                stock = 999999;
+            };
+            class 1Rnd_HE_Grenade_shell {
+                displayName = "1Rnd HE Grenade Shell";
+                price = 100;
+                stock = 999999;
+            };
+            class 1Rnd_Smoke_Grenade_shell {
+                displayName = "1Rnd Smoke Grenade Shell";
+                price = 50;
+                stock = 999999;
+            };
+            class 30Rnd_762x39_Mag_F {
+                displayName = "30Rnd 7.62mm AKM Mag";
+                price = 45;
+                stock = 999999;
+            };
+            class 30Rnd_545x39_Mag_F {
+                displayName = "30Rnd 5.45mm AKS Mag";
+                price = 40;
+                stock = 999999;
+            };
+            class 30Rnd_580x42_Mag_F {
+                displayName = "30Rnd 5.8mm CAR-95 Mag";
+                price = 55;
+                stock = 999999;
+            };
+            class 100Rnd_580x42_Mag_F {
+                displayName = "100Rnd 5.8mm CAR-95-1 Mag";
+                price = 150;
+                stock = 999999;
+            };
+            class 30Rnd_65x39_caseless_green {
+                displayName = "30Rnd 6.5mm Katiba Mag";
+                price = 60;
+                stock = 999999;
+            };
+            class 2Rnd_12Gauge_Pellets {
+                displayName = "2Rnd 12Gauge Pellets";
+                price = 30;
+                stock = 999999;
+            };
+            class 30Rnd_556x45_Stanag {
+                displayName = "30Rnd 5.56mm STANAG Mag";
+                price = 50;
+                stock = 999999;
+            };
+            class 30Rnd_65x39_caseless_mag {
+                displayName = "30Rnd 6.5mm MX Mag";
+                price = 60;
+                stock = 999999;
+            };
+            class 30Rnd_65x39_caseless_msbs_mag {
+                displayName = "30Rnd 6.5mm Promet Mag";
+                price = 60;
+                stock = 999999;
+            };
+            class 6Rnd_12Gauge_Pellets {
+                displayName = "6Rnd 12Gauge Pellets";
+                price = 40;
+                stock = 999999;
+            };
+            class 75rnd_762x39_AK12_Mag_F {
+                displayName = "75Rnd 7.62mm RPK-12 Mag";
+                price = 120;
+                stock = 999999;
+            };
+            class 75rnd_762x39_AK12_Arid_Mag_F {
+                displayName = "75Rnd 7.62mm RPK-12 Arid Mag";
+                price = 120;
+                stock = 999999;
+            };
+            class 75rnd_762x39_AK12_Lush_Mag_F {
+                displayName = "75Rnd 7.62mm RPK-12 Lush Mag";
+                price = 120;
+                stock = 999999;
+            };
+            class 150Rnd_556x45_Drum_Mag_F {
+                displayName = "150Rnd 5.56mm Drum Mag";
+                price = 200;
+                stock = 999999;
+            };
+            class 20Rnd_762x51_Mag {
+                displayName = "20Rnd 7.62mm SPAR-17 Mag";
+                price = 70;
+                stock = 999999;
+            };
+            class 50Rnd_570x28_SMG_03 {
+                displayName = "50Rnd 5.7mm P90 Mag";
+                price = 80;
+                stock = 999999;
+            };
+            class 30Rnd_9x21_Mag {
+                displayName = "30Rnd 9mm PDW2000 Mag";
+                price = 35;
+                stock = 999999;
+            };
+            class 30Rnd_9x21_Mag_SMG_02 {
+                displayName = "30Rnd 9mm Protector/Sting Mag";
+                price = 35;
+                stock = 999999;
+            };
+            class 30Rnd_45ACP_Mag_SMG_01 {
+                displayName = "30Rnd .45 ACP Vector Mag";
+                price = 45;
+                stock = 999999;
+            };
+            class 200Rnd_556x45_Box_F {
+                displayName = "200Rnd 5.56mm LMG-3 Box";
+                price = 250;
+                stock = 999999;
+            };
+            class 200Rnd_65x39_cased_Box {
+                displayName = "200Rnd 6.5mm Mk200 Box";
+                price = 300;
+                stock = 999999;
+            };
+            class 100Rnd_65x39_caseless_mag {
+                displayName = "100Rnd 6.5mm MX SW Mag";
+                price = 180;
+                stock = 999999;
+            };
+            class 150Rnd_93x64_Mag {
+                displayName = "150Rnd 9.3mm Navid Mag";
+                price = 350;
+                stock = 999999;
+            };
+            class 130Rnd_338_Mag {
+                displayName = "130Rnd .338 SPMG Mag";
+                price = 320;
+                stock = 999999;
+            };
+            class 150Rnd_762x51_Box {
+                displayName = "150Rnd 7.62mm Zafir Box";
+                price = 200;
+                stock = 999999;
+            };
+            class NLAW_F {
+                displayName = "NLAW";
+                price = 800;
+                stock = 999999;
+            };
+            class RPG7_F {
+                displayName = "RPG-7 Rocket";
+                price = 300;
+                stock = 999999;
+            };
+            class RPG32_F {
+                displayName = "RPG-32 Rocket";
+                price = 400;
+                stock = 999999;
+            };
+            class RPG32_HE_F {
+                displayName = "RPG-32 HE Rocket";
+                price = 500;
+                stock = 999999;
+            };
+            class Vorona_HEAT {
+                displayName = "Vorona HEAT";
+                price = 600;
+                stock = 999999;
+            };
+            class Vorona_HE {
+                displayName = "Vorona HE";
+                price = 700;
+                stock = 999999;
+            };
+            class MRAWS_HEAT_F {
+                displayName = "MRAWS HEAT";
+                price = 900;
+                stock = 999999;
+            };
+            class MRAWS_HE_F {
+                displayName = "MRAWS HE";
+                price = 1000;
+                stock = 999999;
+            };
+            class Titan_AT {
+                displayName = "Titan AT";
+                price = 1200;
+                stock = 999999;
+            };
+            class Titan_AA {
+                displayName = "Titan AA";
+                price = 1500;
+                stock = 999999;
+            };
+            class Titan_AP {
+                displayName = "Titan AP";
+                price = 1300;
+                stock = 999999;
+            };
+            class 7Rnd_35mm_flare {
+                displayName = "7Rnd 35mm Flare";
+                price = 150;
+                stock = 999999;
+            };
+            class 10Rnd_65x39_caseless {
+                displayName = "10Rnd 6.5mm Caseless";
+                price = 80;
+                stock = 999999;
+            };
+            class 10Rnd_93x64_DMR_05_Mag {
+                displayName = "10Rnd 9.3mm Cyrus";
+                price = 120;
+                stock = 999999;
+            };
+            class 5Rnd_127x108_Mag {
+                displayName = "5Rnd 12.7mm GM6";
+                price = 200;
+                stock = 999999;
+            };
+            class 7Rnd_408_Mag {
+                displayName = "7Rnd .408 LRR";
+                price = 180;
+                stock = 999999;
+            };
+            class 10Rnd_338_Mag {
+                displayName = "10Rnd .338 MAR-10";
+                price = 150;
+                stock = 999999;
+            };
+            class 20Rnd_762x48_Mag {
+                displayName = "20Rnd 7.62mm Mk-I EMR";
+                price = 100;
+                stock = 999999;
+            };
+            class 10Rnd_762x54_Mag {
+                displayName = "10Rnd 7.62mm Rahim";
+                price = 90;
+                stock = 999999;
+            };
+        };
+
+        class Vests {
+            displayName = "Vest Shop";
+            kindOf = "Items";
+
+            class V_PlateCarrierGL_blk {
+                displayName = "Black Plate Carrier GL";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrierGL_rgr {
+                displayName = "Green Plate Carrier GL";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrierGL_mtp {
+                displayName = "MTP Plate Carrier GL";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrierGL_tna_F {
+                displayName = "Tropic Plate Carrier GL";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrierGL_wdl {
+                displayName = "Woodland Plate Carrier GL";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrier1_blk {
+                displayName = "Black Plate Carrier Lite";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrier1_rgr {
+                displayName = "Green Plate Carrier Lite";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrier1_rgr_noflag_F {
+                displayName = "Green Plate Carrier Lite (No Flag)";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrier1_tna_F {
+                displayName = "Tropic Plate Carrier Lite";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrier1_wdl {
+                displayName = "Woodland Plate Carrier Lite";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrier2_blk {
+                displayName = "Black Plate Carrier";
+                price = 450;
+                stock = 999999;
+            };
+            class V_PlateCarrier2_rgr {
+                displayName = "Green Plate Carrier";
+                price = 450;
+                stock = 999999;
+            };
+            class V_PlateCarrier2_rgr_noflag_F {
+                displayName = "Green Plate Carrier (No Flag)";
+                price = 450;
+                stock = 999999;
+            };
+            class V_PlateCarrier2_wdl {
+                displayName = "Woodland Plate Carrier";
+                price = 450;
+                stock = 999999;
+            };
+            class V_PlateCarrierSpec_blk {
+                displayName = "Black Plate Carrier Special";
+                price = 600;
+                stock = 999999;
+            };
+            class V_PlateCarrierSpec_rgr {
+                displayName = "Green Plate Carrier Special";
+                price = 600;
+                stock = 999999;
+            };
+            class V_PlateCarrierSpec_mtp {
+                displayName = "MTP Plate Carrier Special";
+                price = 600;
+                stock = 999999;
+            };
+            class V_PlateCarrierSpec_tna_F {
+                displayName = "Tropic Plate Carrier Special";
+                price = 600;
+                stock = 999999;
+            };
+            class V_PlateCarrierSpec_wdl {
+                displayName = "Woodland Plate Carrier Special";
+                price = 600;
+                stock = 999999;
+            };
+            class V_Chestrig_blk {
+                displayName = "Black Chest Rig";
+                price = 300;
+                stock = 999999;
+            };
+            class V_Chestrig_rgr {
+                displayName = "Green Chest Rig";
+                price = 300;
+                stock = 999999;
+            };
+            class V_Chestrig_khk {
+                displayName = "Khaki Chest Rig";
+                price = 300;
+                stock = 999999;
+            };
+            class V_Chestrig_oli {
+                displayName = "Olive Chest Rig";
+                price = 300;
+                stock = 999999;
+            };
+            class V_PlateCarrierL_CTRG {
+                displayName = "CTRG Plate Carrier Lite";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrierH_CTRG {
+                displayName = "CTRG Plate Carrier Heavy";
+                price = 500;
+                stock = 999999;
+            };
+            class V_DeckCrew_blue_F {
+                displayName = "Blue Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_DeckCrew_brown_F {
+                displayName = "Brown Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_DeckCrew_green_F {
+                displayName = "Green Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_DeckCrew_red_F {
+                displayName = "Red Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_DeckCrew_violet_F {
+                displayName = "Violet Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_DeckCrew_white_F {
+                displayName = "White Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_DeckCrew_yellow_F {
+                displayName = "Yellow Deck Crew";
+                price = 200;
+                stock = 999999;
+            };
+            class V_EOD_blue_F {
+                displayName = "Blue EOD Vest";
+                price = 400;
+                stock = 999999;
+            };
+            class V_EOD_IDAP_blue_F {
+                displayName = "IDAP Blue EOD Vest";
+                price = 400;
+                stock = 999999;
+            };
+            class V_EOD_coyote_F {
+                displayName = "Coyote EOD Vest";
+                price = 400;
+                stock = 999999;
+            };
+            class V_EOD_olive_F {
+                displayName = "Olive EOD Vest";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrierIAGL_dgtl {
+                displayName = "Digital IAGL Plate Carrier";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrierIAGL_oli {
+                displayName = "Olive IAGL Plate Carrier";
+                price = 500;
+                stock = 999999;
+            };
+            class V_PlateCarrierIA1_dgtl {
+                displayName = "Digital IA1 Plate Carrier";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrierIA2_dgtl {
+                displayName = "Digital IA2 Plate Carrier";
+                price = 450;
+                stock = 999999;
+            };
+            class V_TacVest_gen_F {
+                displayName = "Gendarmerie Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_Plain_crystal_F {
+                displayName = "Crystal Plain Vest";
+                price = 200;
+                stock = 999999;
+            };
+            class V_Plain_medical_F {
+                displayName = "Medical Plain Vest";
+                price = 200;
+                stock = 999999;
+            };
+            class V_SmershVest_01_F {
+                displayName = "Smersh Vest";
+                price = 350;
+                stock = 999999;
+            };
+            class V_SmershVest_01_radio_F {
+                displayName = "Smersh Vest with Radio";
+                price = 400;
+                stock = 999999;
+            };
+            class V_HarnessOGL_brn {
+                displayName = "Brown OGL Harness";
+                price = 250;
+                stock = 999999;
+            };
+            class V_HarnessOGL_ghex_F {
+                displayName = "Green Hex OGL Harness";
+                price = 250;
+                stock = 999999;
+            };
+            class V_HarnessOGL_gry {
+                displayName = "Grey OGL Harness";
+                price = 250;
+                stock = 999999;
+            };
+            class V_HarnessO_brn {
+                displayName = "Brown Harness";
+                price = 200;
+                stock = 999999;
+            };
+            class V_HarnessO_ghex_F {
+                displayName = "Green Hex Harness";
+                price = 200;
+                stock = 999999;
+            };
+            class V_HarnessO_gry {
+                displayName = "Grey Harness";
+                price = 200;
+                stock = 999999;
+            };
+            class V_LegStrapBag_black_F {
+                displayName = "Black Leg Strap Bag";
+                price = 150;
+                stock = 999999;
+            };
+            class V_LegStrapBag_coyote_F {
+                displayName = "Coyote Leg Strap Bag";
+                price = 150;
+                stock = 999999;
+            };
+            class V_LegStrapBag_olive_F {
+                displayName = "Olive Leg Strap Bag";
+                price = 150;
+                stock = 999999;
+            };
+            class V_CarrierRigKBT_01_heavy_EAF_F {
+                displayName = "EAF Heavy Carrier Rig";
+                price = 500;
+                stock = 999999;
+            };
+            class V_CarrierRigKBT_01_heavy_olive_F {
+                displayName = "Olive Heavy Carrier Rig";
+                price = 500;
+                stock = 999999;
+            };
+            class V_CarrierRigKBT_01_light_EAF_F {
+                displayName = "EAF Light Carrier Rig";
+                price = 400;
+                stock = 999999;
+            };
+            class V_CarrierRigKBT_01_light_olive_F {
+                displayName = "Olive Light Carrier Rig";
+                price = 400;
+                stock = 999999;
+            };
+            class V_CarrierRigKBT_01_EAF_F {
+                displayName = "EAF Carrier Rig";
+                price = 450;
+                stock = 999999;
+            };
+            class V_CarrierRigKBT_01_olive_F {
+                displayName = "Olive Carrier Rig";
+                price = 450;
+                stock = 999999;
+            };
+            class V_Pocketed_black_F {
+                displayName = "Black Pocketed Vest";
+                price = 200;
+                stock = 999999;
+            };
+            class V_Pocketed_coyote_F {
+                displayName = "Coyote Pocketed Vest";
+                price = 200;
+                stock = 999999;
+            };
+            class V_Pocketed_olive_F {
+                displayName = "Olive Pocketed Vest";
+                price = 200;
+                stock = 999999;
+            };
+            class V_Rangemaster_belt {
+                displayName = "Rangemaster Belt";
+                price = 100;
+                stock = 999999;
+            };
+            class V_TacVestIR_blk {
+                displayName = "Black IR Tactical Vest";
+                price = 350;
+                stock = 999999;
+            };
+            class V_RebreatherIA {
+                displayName = "IA Rebreather";
+                price = 300;
+                stock = 999999;
+            };
+            class V_RebreatherIR {
+                displayName = "IR Rebreather";
+                price = 300;
+                stock = 999999;
+            };
+            class V_RebreatherB {
+                displayName = "B Rebreather";
+                price = 300;
+                stock = 999999;
+            };
+            class V_Safety_blue_F {
+                displayName = "Blue Safety Vest";
+                price = 100;
+                stock = 999999;
+            };
+            class V_Safety_orange_F {
+                displayName = "Orange Safety Vest";
+                price = 100;
+                stock = 999999;
+            };
+            class V_Safety_yellow_F {
+                displayName = "Yellow Safety Vest";
+                price = 100;
+                stock = 999999;
+            };
+            class V_BandollierB_blk {
+                displayName = "Black Bandolier";
+                price = 200;
+                stock = 999999;
+            };
+            class V_BandollierB_cbr {
+                displayName = "Coyote Bandolier";
+                price = 200;
+                stock = 999999;
+            };
+            class V_BandollierB_ghex_F {
+                displayName = "Green Hex Bandolier";
+                price = 200;
+                stock = 999999;
+            };
+            class V_BandollierB_rgr {
+                displayName = "Ranger Green Bandolier";
+                price = 200;
+                stock = 999999;
+            };
+            class V_BandollierB_khk {
+                displayName = "Khaki Bandolier";
+                price = 200;
+                stock = 999999;
+            };
+            class V_BandollierB_oli {
+                displayName = "Olive Bandolier";
+                price = 200;
+                stock = 999999;
+            };
+            class V_TacChestrig_cbr_F {
+                displayName = "Coyote Tactical Chest Rig";
+                price = 250;
+                stock = 999999;
+            };
+            class V_TacChestrig_grn_F {
+                displayName = "Green Tactical Chest Rig";
+                price = 250;
+                stock = 999999;
+            };
+            class V_TacChestrig_oli_F {
+                displayName = "Olive Tactical Chest Rig";
+                price = 250;
+                stock = 999999;
+            };
+            class V_TacVest_blk {
+                displayName = "Black Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_TacVest_brn {
+                displayName = "Brown Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_TacVest_camo {
+                displayName = "Camo Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_TacVest_khk {
+                displayName = "Khaki Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_TacVest_oli {
+                displayName = "Olive Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_TacVest_blk_POLICE {
+                displayName = "Police Tactical Vest";
+                price = 300;
+                stock = 999999;
+            };
+            class V_I_G_resistanceLeader_F {
+                displayName = "Resistance Leader Vest";
+                price = 400;
+                stock = 999999;
+            };
+            class V_PlateCarrier_Kerry {
+                displayName = "Kerry Plate Carrier";
+                price = 450;
+                stock = 999999;
+            };
+            class V_Press_F {
+                displayName = "Press Vest";
+                price = 200;
+                stock = 999999;
+            };
+        };
+
+        class Headgear {
+            displayName = "Headgear Shop";
+            kindOf = "Items";
+
+            class H_HelmetB {
+                displayName = "Combat Helmet";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetSpecB {
+                displayName = "Enhanced Combat Helmet";
+                price = 500;
+                stock = 999999;
+            };
+            class H_HelmetB_light {
+                displayName = "Light Combat Helmet";
+                price = 250;
+                stock = 999999;
+            };
+            class H_HelmetB_black {
+                displayName = "Black Combat Helmet";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetHBK_headset_F {
+                displayName = "HBK Helmet with Headset";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetHBK_chops_F {
+                displayName = "HBK Helmet with Chops";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetHBK_ear_F {
+                displayName = "HBK Helmet with Ear Protection";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetHBK_F {
+                displayName = "HBK Helmet";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetSpecO_blk {
+                displayName = "Special Purpose Helmet Black";
+                price = 450;
+                stock = 999999;
+            };
+            class H_HelmetSpecO_ghex_F {
+                displayName = "Special Purpose Helmet Green Hex";
+                price = 450;
+                stock = 999999;
+            };
+            class H_HelmetSpecO_ocamo {
+                displayName = "Special Purpose Helmet Ocamo";
+                price = 450;
+                stock = 999999;
+            };
+            class H_HelmetAggressor_F {
+                displayName = "Aggressor Helmet";
+                price = 500;
+                stock = 999999;
+            };
+            class H_HelmetAggressor_cover_F {
+                displayName = "Aggressor Helmet (Cover)";
+                price = 525;
+                stock = 999999;
+            };
+            class H_HelmetAggressor_cover_taiga_F {
+                displayName = "Aggressor Helmet (Taiga)";
+                price = 525;
+                stock = 999999;
+            };
+            class H_PASGT_basic_black_F {
+                displayName = "PASGT Basic Black";
+                price = 300;
+                stock = 999999;
+            };
+            class H_PASGT_basic_blue_F {
+                displayName = "PASGT Basic Blue";
+                price = 300;
+                stock = 999999;
+            };
+            class H_PASGT_basic_olive_F {
+                displayName = "PASGT Basic Olive";
+                price = 300;
+                stock = 999999;
+            };
+            class H_PASGT_basic_white_F {
+                displayName = "PASGT Basic White";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_camo {
+                displayName = "Combat Helmet (Camo)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetB_desert {
+                displayName = "Combat Helmet (Desert)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetB_grass {
+                displayName = "Combat Helmet (Grass)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetB_sand {
+                displayName = "Combat Helmet (Sand)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetB_snakeskin {
+                displayName = "Combat Helmet (Snakeskin)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetB_tna_F {
+                displayName = "Combat Helmet (Tna)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetB_plain_wdl {
+                displayName = "Combat Helmet (Woodland)";
+                price = 350;
+                stock = 999999;
+            };
+            class H_HelmetCrew_O_ghex_F {
+                displayName = "Crew Helmet Green Hex";
+                price = 400;
+                stock = 999999;
+            };
+            class H_Tank_black_F {
+                displayName = "Tank Crew Helmet Black";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetCrew_I {
+                displayName = "Crew Helmet AAF";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetCrew_O {
+                displayName = "Crew Helmet CSAT";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetCrew_B {
+                displayName = "Crew Helmet NATO";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetLeaderO_ghex_F {
+                displayName = "Leader Helmet Green Hex";
+                price = 600;
+                stock = 999999;
+            };
+            class H_HelmetLeaderO_ocamo {
+                displayName = "Leader Helmet Ocamo";
+                price = 600;
+                stock = 999999;
+            };
+            class H_HelmetLeaderO_oucamo {
+                displayName = "Leader Helmet Urban";
+                price = 600;
+                stock = 999999;
+            };
+            class H_HelmetSpecB_blk {
+                displayName = "Enhanced Combat Helmet Black";
+                price = 550;
+                stock = 999999;
+            };
+            class H_HelmetSpecB_paint2 {
+                displayName = "Enhanced Combat Helmet Paint 2";
+                price = 550;
+                stock = 999999;
+            };
+            class H_HelmetSpecB_paint1 {
+                displayName = "Enhanced Combat Helmet Paint 1";
+                price = 550;
+                stock = 999999;
+            };
+            class H_HelmetSpecB_sand {
+                displayName = "Enhanced Combat Helmet Sand";
+                price = 550;
+                stock = 999999;
+            };
+            class H_HelmetSpecB_snakeskin {
+                displayName = "Enhanced Combat Helmet Snakeskin";
+                price = 550;
+                stock = 999999;
+            };
+            class H_HelmetB_Enh_tna_F {
+                displayName = "Enhanced Combat Helmet Tna";
+                price = 550;
+                stock = 999999;
+            };
+            class H_HelmetSpecB_wdl {
+                displayName = "Enhanced Combat Helmet Woodland";
+                price = 550;
+                stock = 999999;
+            };
+            class H_CrewHelmetHeli_I {
+                displayName = "Heli Crew Helmet AAF";
+                price = 450;
+                stock = 999999;
+            };
+            class H_CrewHelmetHeli_O {
+                displayName = "Heli Crew Helmet CSAT";
+                price = 450;
+                stock = 999999;
+            };
+            class H_CrewHelmetHeli_B {
+                displayName = "Heli Crew Helmet NATO";
+                price = 450;
+                stock = 999999;
+            };
+            class H_PilotHelmetHeli_I {
+                displayName = "Heli Pilot Helmet AAF";
+                price = 500;
+                stock = 999999;
+            };
+            class H_PilotHelmetHeli_O {
+                displayName = "Heli Pilot Helmet CSAT";
+                price = 500;
+                stock = 999999;
+            };
+            class H_PilotHelmetHeli_B {
+                displayName = "Heli Pilot Helmet NATO";
+                price = 500;
+                stock = 999999;
+            };
+            class H_HelmetB_light_black {
+                displayName = "Light Combat Helmet Black";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_light_desert {
+                displayName = "Light Combat Helmet Desert";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_light_grass {
+                displayName = "Light Combat Helmet Grass";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_light_sand {
+                displayName = "Light Combat Helmet Sand";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_light_snakeskin {
+                displayName = "Light Combat Helmet Snakeskin";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_Light_tna_F {
+                displayName = "Light Combat Helmet Tna";
+                price = 300;
+                stock = 999999;
+            };
+            class H_HelmetB_light_wdl {
+                displayName = "Light Combat Helmet Woodland";
+                price = 300;
+                stock = 999999;
+            };
+            class H_PilotHelmetFighter_I {
+                displayName = "Fighter Pilot Helmet AAF";
+                price = 600;
+                stock = 999999;
+            };
+            class H_PilotHelmetFighter_O {
+                displayName = "Fighter Pilot Helmet CSAT";
+                price = 600;
+                stock = 999999;
+            };
+            class H_PilotHelmetFighter_B {
+                displayName = "Fighter Pilot Helmet NATO";
+                price = 600;
+                stock = 999999;
+            };
+            class H_PASGT_basic_blue_press_F {
+                displayName = "Press Helmet Basic";
+                price = 200;
+                stock = 999999;
+            };
+            class H_PASGT_neckprot_blue_press_F {
+                displayName = "Press Helmet with Neck Protection";
+                price = 250;
+                stock = 999999;
+            };
+            class H_HelmetO_ghex_F {
+                displayName = "CSAT Helmet Green Hex";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetO_ocamo {
+                displayName = "CSAT Helmet Ocamo";
+                price = 400;
+                stock = 999999;
+            };
+            class H_HelmetO_oucamo {
+                displayName = "CSAT Helmet Urban";
+                price = 400;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_black_F {
+                displayName = "Racing Helmet Black";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_blue_F {
+                displayName = "Racing Helmet Blue";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_2_F {
+                displayName = "Racing Helmet 2";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_F {
+                displayName = "Racing Helmet 1";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_green_F {
+                displayName = "Racing Helmet Green";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_orange_F {
+                displayName = "Racing Helmet Orange";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_red_F {
+                displayName = "Racing Helmet Red";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_3_F {
+                displayName = "Racing Helmet 3";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_4_F {
+                displayName = "Racing Helmet 4";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_white_F {
+                displayName = "Racing Helmet White";
+                price = 200;
+                stock = 999999;
+            };
+            class H_RacingHelmet_1_yellow_F {
+                displayName = "Racing Helmet Yellow";
+                price = 200;
+                stock = 999999;
+            };
+            class H_HelmetO_ViperSP_ghex_F {
+                displayName = "Special Purpose Helmet (Green Hex)";
+                price = 800;
+                stock = 999999;
+            };
+            class H_HelmetO_ViperSP_hex_F {
+                displayName = "Special Purpose Helmet (Hex)";
+                price = 800;
+                stock = 999999;
+            };
+            class H_HelmetB_TI_tna_F {
+                displayName = "Thermal Combat Helmet (Tna)";
+                price = 1000;
+                stock = 999999;
+            };
+            class H_HelmetB_TI_arid_F {
+                displayName = "Thermal Combat Helmet (Arid)";
+                price = 1000;
+                stock = 999999;
+            };
+            class NVGoggles {
+                displayName = "Night Vision Goggles";
+                price = 1000;
+                stock = 999999;
+            };
+            class NVGoggles_OPFOR {
+                displayName = "Advanced NVGs";
+                price = 1500;
+                stock = 999999;
+            };
+            class NVGoggles_INDEP {
+                displayName = "Combat NVGs";
+                price = 1200;
+                stock = 999999;
+            };
+            class G_Balaclava_blk {
+                displayName = "Black Balaclava";
+                price = 100;
+                stock = 999999;
+            };
+            class G_Balaclava_oli {
+                displayName = "Olive Balaclava";
+                price = 100;
+                stock = 999999;
+            };
+            class G_Balaclava_combat {
+                displayName = "Combat Balaclava";
+                price = 150;
+                stock = 999999;
+            };
+        };
+
+        class Uniforms {
+            displayName = "Uniform Shop";
+            kindOf = "Items";
+
+            class U_C_IDAP_Man_cargo_F {
+                displayName = "IDAP Cargo";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_IDAP_Man_jeans_F {
+                displayName = "IDAP Jeans";
+                price = 120;
+                stock = 999999;
+            };
+            class U_C_IDAP_Man_Casual_F {
+                displayName = "IDAP Casual";
+                price = 130;
+                stock = 999999;
+            };
+            class U_C_IDAP_Man_shorts_F {
+                displayName = "IDAP Shorts";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_IDAP_Man_tee_F {
+                displayName = "IDAP T-Shirt";
+                price = 90;
+                stock = 999999;
+            };
+            class U_C_IDAP_Man_teeshorts_F {
+                displayName = "IDAP T-Shirt & Shorts";
+                price = 110;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Bandit_4_F {
+                displayName = "Bandit Clothes 4";
+                price = 200;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Bandit_1_F {
+                displayName = "Bandit Clothes 1";
+                price = 200;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Bandit_2_F {
+                displayName = "Bandit Clothes 2";
+                price = 200;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Bandit_5_F {
+                displayName = "Bandit Clothes 5";
+                price = 200;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Bandit_3_F {
+                displayName = "Bandit Clothes 3";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_ArtTShirt_01_v6_F {
+                displayName = "Art T-Shirt 6";
+                price = 80;
+                stock = 999999;
+            };
+            class U_C_ArtTShirt_01_v1_F {
+                displayName = "Art T-Shirt 1";
+                price = 80;
+                stock = 999999;
+            };
+            class U_C_Man_casual_2_F {
+                displayName = "Casual Outfit 2";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_ArtTShirt_01_v2_F {
+                displayName = "Art T-Shirt 2";
+                price = 80;
+                stock = 999999;
+            };
+            class U_C_ArtTShirt_01_v4_F {
+                displayName = "Art T-Shirt 4";
+                price = 80;
+                stock = 999999;
+            };
+            class U_C_Man_casual_3_F {
+                displayName = "Casual Outfit 3";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_Man_casual_1_F {
+                displayName = "Casual Outfit 1";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_ArtTShirt_01_v5_F {
+                displayName = "Art T-Shirt 5";
+                price = 80;
+                stock = 999999;
+            };
+            class U_C_ArtTShirt_01_v3_F {
+                displayName = "Art T-Shirt 3";
+                price = 80;
+                stock = 999999;
+            };
+            class U_C_CBRN_Suit_01_Blue_F {
+                displayName = "CBRN Suit Blue";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_CBRN_Suit_01_MTP_F {
+                displayName = "CBRN Suit MTP";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_CBRN_Suit_01_Tropic_F {
+                displayName = "CBRN Suit Tropic";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_C_CBRN_Suit_01_White_F {
+                displayName = "CBRN Suit White";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_CBRN_Suit_01_Wdl_F {
+                displayName = "CBRN Suit Woodland";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_I_CBRN_Suit_01_AAF_F {
+                displayName = "CBRN Suit AAF";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_I_E_CBRN_Suit_01_EAF_F {
+                displayName = "CBRN Suit EAF";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_mcam {
+                displayName = "Combat Uniform MTP";
+                price = 300;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_mcam_tshirt {
+                displayName = "Combat Uniform MTP T-Shirt";
+                price = 280;
+                stock = 999999;
+            };
+            class U_I_E_Uniform_01_officer_F {
+                displayName = "Combat Uniform Officer";
+                price = 350;
+                stock = 999999;
+            };
+            class U_I_E_Uniform_01_shortsleeve_F {
+                displayName = "Combat Uniform Shortsleeve";
+                price = 280;
+                stock = 999999;
+            };
+            class U_I_G_resistanceLeader_F {
+                displayName = "Combat Uniform Resistance";
+                price = 400;
+                stock = 999999;
+            };
+            class U_I_E_Uniform_01_sweater_F {
+                displayName = "Combat Uniform Sweater";
+                price = 300;
+                stock = 999999;
+            };
+            class U_I_E_Uniform_01_tanktop_F {
+                displayName = "Combat Uniform Tank Top";
+                price = 250;
+                stock = 999999;
+            };
+            class U_B_T_Soldier_F {
+                displayName = "Combat Uniform Tropical";
+                price = 300;
+                stock = 999999;
+            };
+            class U_B_T_Soldier_AR_F {
+                displayName = "Combat Uniform Tropical AR";
+                price = 320;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_mcam_wdl_f {
+                displayName = "Combat Uniform Woodland";
+                price = 300;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_tshirt_mcam_wdL_f {
+                displayName = "Combat Uniform Woodland T-Shirt";
+                price = 280;
+                stock = 999999;
+            };
+            class U_I_CombatUniform {
+                displayName = "Combat Uniform";
+                price = 300;
+                stock = 999999;
+            };
+            class U_I_OfficerUniform {
+                displayName = "Officer Uniform";
+                price = 350;
+                stock = 999999;
+            };
+            class U_I_CombatUniform_shortsleeve {
+                displayName = "Combat Uniform Shortsleeve";
+                price = 280;
+                stock = 999999;
+            };
+            class U_I_E_Uniform_01_F {
+                displayName = "Combat Uniform";
+                price = 300;
+                stock = 999999;
+            };
+            class U_C_Poloshirt_blue {
+                displayName = "Polo Blue";
+                price = 50;
+                stock = 999999;
+            };
+            class U_C_Poloshirt_burgundy {
+                displayName = "Polo Burgundy";
+                price = 50;
+                stock = 999999;
+            };
+            class U_C_Poloshirt_redwhite {
+                displayName = "Polo Red/White";
+                price = 50;
+                stock = 999999;
+            };
+            class U_C_Poloshirt_salmon {
+                displayName = "Polo Salmon";
+                price = 50;
+                stock = 999999;
+            };
+            class U_C_Poloshirt_stripped {
+                displayName = "Polo Stripped";
+                price = 50;
+                stock = 999999;
+            };
+            class U_C_Poloshirt_tricolour {
+                displayName = "Polo Tricolor";
+                price = 50;
+                stock = 999999;
+            };
+            class U_Competitor {
+                displayName = "Competitor Suit";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_ConstructionCoverall_Black_F {
+                displayName = "Construction Coverall Black";
+                price = 120;
+                stock = 999999;
+            };
+            class U_C_ConstructionCoverall_Blue_F {
+                displayName = "Construction Coverall Blue";
+                price = 120;
+                stock = 999999;
+            };
+            class U_C_ConstructionCoverall_Red_F {
+                displayName = "Construction Coverall Red";
+                price = 120;
+                stock = 999999;
+            };
+            class U_C_ConstructionCoverall_Vrana_F {
+                displayName = "Construction Coverall Vrana";
+                price = 120;
+                stock = 999999;
+            };
+            class U_B_CTRG_1 {
+                displayName = "CTRG Combat Uniform";
+                price = 400;
+                stock = 999999;
+            };
+            class U_B_CTRG_3 {
+                displayName = "CTRG Combat Uniform 3";
+                price = 400;
+                stock = 999999;
+            };
+            class U_B_CTRG_2 {
+                displayName = "CTRG Combat Uniform 2";
+                price = 400;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_F {
+                displayName = "CTRG Stealth Uniform";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_arid_F {
+                displayName = "CTRG Stealth Uniform Arid";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_3_F {
+                displayName = "CTRG Stealth Uniform 3";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_3_arid_F {
+                displayName = "CTRG Stealth Uniform 3 Arid";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_2_F {
+                displayName = "CTRG Stealth Uniform 2";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_2_arid_F {
+                displayName = "CTRG Stealth Uniform 2 Arid";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_urb_1_F {
+                displayName = "CTRG Urban Uniform";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_urb_3_F {
+                displayName = "CTRG Urban Uniform 3";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_CTRG_Soldier_urb_2_F {
+                displayName = "CTRG Urban Uniform 2";
+                price = 500;
+                stock = 999999;
+            };
+            class U_I_L_Uniform_01_camo_F {
+                displayName = "Combat Uniform Camo";
+                price = 300;
+                stock = 999999;
+            };
+            class U_I_L_Uniform_01_deserter_F {
+                displayName = "Deserter Uniform";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_Driver_1_black {
+                displayName = "Driver Coverall Black";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1_blue {
+                displayName = "Driver Coverall Blue";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_2 {
+                displayName = "Driver Coverall 2";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1 {
+                displayName = "Driver Coverall";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1_green {
+                displayName = "Driver Coverall Green";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1_orange {
+                displayName = "Driver Coverall Orange";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1_red {
+                displayName = "Driver Coverall Red";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_3 {
+                displayName = "Driver Coverall 3";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_4 {
+                displayName = "Driver Coverall 4";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1_white {
+                displayName = "Driver Coverall White";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Driver_1_yellow {
+                displayName = "Driver Coverall Yellow";
+                price = 150;
+                stock = 999999;
+            };
+            class U_C_Uniform_Farmer_01_F {
+                displayName = "Farmer Clothes";
+                price = 100;
+                stock = 999999;
+            };
+            class U_O_T_Soldier_F {
+                displayName = "Fatigues [CSAT]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_O_CombatUniform_ocamo {
+                displayName = "Fatigues [Hex]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_O_CombatUniform_oucamo {
+                displayName = "Fatigues [Urban]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_C_FormalSuit_01_black_F {
+                displayName = "Formal Suit Black";
+                price = 200;
+                stock = 999999;
+            };
+            class U_B_GEN_Commander_F {
+                displayName = "Gendarmerie Commander Uniform";
+                price = 350;
+                stock = 999999;
+            };
+            class U_B_GEN_Soldier_F {
+                displayName = "Gendarmerie Uniform";
+                price = 300;
+                stock = 999999;
+            };
+            class U_O_T_Sniper_F {
+                displayName = "Ghillie Suit [CSAT]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_B_T_Sniper_F {
+                displayName = "Ghillie Suit [NATO]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_I_GhillieSuit {
+                displayName = "Ghillie Suit [AAF]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_O_GhillieSuit {
+                displayName = "Ghillie Suit [CSAT]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_B_GhillieSuit {
+                displayName = "Ghillie Suit [NATO]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_O_R_Gorka_01_F {
+                displayName = "Gorka Suit";
+                price = 400;
+                stock = 999999;
+            };
+            class U_O_R_Gorka_01_brown_F {
+                displayName = "Gorka Suit Brown";
+                price = 400;
+                stock = 999999;
+            };
+            class U_I_ParadeUniform_01_AAF_decorated_F {
+                displayName = "Parade Uniform [AAF]";
+                price = 500;
+                stock = 999999;
+            };
+            class U_O_ParadeUniform_01_CSAT_decorated_F {
+                displayName = "Parade Uniform [CSAT]";
+                price = 500;
+                stock = 999999;
+            };
+            class U_I_E_ParadeUniform_01_LDF_decorated_F {
+                displayName = "Parade Uniform [LDF]";
+                price = 500;
+                stock = 999999;
+            };
+            class U_B_ParadeUniform_01_US_decorated_F {
+                displayName = "Parade Uniform [US]";
+                price = 500;
+                stock = 999999;
+            };
+            class U_C_FormalSuit_01_blue_F {
+                displayName = "Formal Suit Blue";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_FormalSuit_01_gray_F {
+                displayName = "Formal Suit Gray";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_FormalSuit_01_khaki_F {
+                displayName = "Formal Suit Khaki";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_FormalSuit_01_tshirt_black_F {
+                displayName = "Formal Suit with T-shirt Black";
+                price = 180;
+                stock = 999999;
+            };
+            class U_C_FormalSuit_01_tshirt_gray_F {
+                displayName = "Formal Suit with T-shirt Gray";
+                price = 180;
+                stock = 999999;
+            };
+            class U_I_FullGhillie_ard {
+                displayName = "Full Ghillie [AAF]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_O_FullGhillie_ard {
+                displayName = "Full Ghillie [CSAT]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_FullGhillie_ard {
+                displayName = "Full Ghillie [NATO]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_O_T_FullGhillie_tna_F {
+                displayName = "Full Ghillie (Jungle) [CSAT]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_T_FullGhillie_tna_F {
+                displayName = "Full Ghillie (Jungle) [NATO]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_I_FullGhillie_lsh {
+                displayName = "Full Ghillie (Lush) [AAF]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_O_FullGhillie_lsh {
+                displayName = "Full Ghillie (Lush) [CSAT]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_FullGhillie_lsh {
+                displayName = "Full Ghillie (Lush) [NATO]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_I_FullGhillie_sard {
+                displayName = "Full Ghillie (Semi-Arid) [AAF]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_O_FullGhillie_sard {
+                displayName = "Full Ghillie (Semi-Arid) [CSAT]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_FullGhillie_sard {
+                displayName = "Full Ghillie (Semi-Arid) [NATO]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_O_R_Gorka_01_camo_F {
+                displayName = "Gorka Suit Camo";
+                price = 400;
+                stock = 999999;
+            };
+            class U_BG_Guerrilla_6_1 {
+                displayName = "Guerilla Apparel";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_Guerilla1_1 {
+                displayName = "Guerilla Garment";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_Guerilla1_2_F {
+                displayName = "Guerilla Outfit";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_Guerilla2_2 {
+                displayName = "Guerilla Outfit 2";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_Guerilla2_1 {
+                displayName = "Guerilla Outfit 3";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_Guerilla2_3 {
+                displayName = "Guerilla Outfit 4";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_Guerilla3_1 {
+                displayName = "Guerilla Smocks";
+                price = 200;
+                stock = 999999;
+            };
+            class U_BG_leader {
+                displayName = "Guerilla Uniform";
+                price = 250;
+                stock = 999999;
+            };
+            class U_I_HeliPilotCoveralls {
+                displayName = "Heli Pilot Coveralls [AAF]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_I_E_Uniform_01_coveralls_F {
+                displayName = "Heli Pilot Coveralls [LDF]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_B_HeliPilotCoveralls {
+                displayName = "Heli Pilot Coveralls [NATO]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_C_HunterBody_grn {
+                displayName = "Hunter Clothes";
+                price = 150;
+                stock = 999999;
+            };
+            class U_OrestesBody {
+                displayName = "Jacket and Shorts";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_Journalist {
+                displayName = "Journalist Clothes";
+                price = 100;
+                stock = 999999;
+            };
+            class U_O_officer_noInsignia_hex_F {
+                displayName = "Light Combat Uniform";
+                price = 250;
+                stock = 999999;
+            };
+            class U_C_E_LooterJacket_01_F {
+                displayName = "Looter Jacket";
+                price = 150;
+                stock = 999999;
+            };
+            class U_I_L_Uniform_01_tshirt_black_F {
+                displayName = "Looter T-Shirt Black";
+                price = 80;
+                stock = 999999;
+            };
+            class U_I_L_Uniform_01_tshirt_olive_F {
+                displayName = "Looter T-Shirt Olive";
+                price = 80;
+                stock = 999999;
+            };
+            class U_I_L_Uniform_01_tshirt_skull_F {
+                displayName = "Looter T-Shirt Skull";
+                price = 80;
+                stock = 999999;
+            };
+            class U_I_L_Uniform_01_tshirt_sport_F {
+                displayName = "Looter T-Shirt Sport";
+                price = 80;
+                stock = 999999;
+            };
+            class U_Marshal {
+                displayName = "Marshal Clothes";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_Mechanic_01_F {
+                displayName = "Mechanic Clothes";
+                price = 120;
+                stock = 999999;
+            };
+            class U_O_T_Officer_F {
+                displayName = "Officer Fatigues";
+                price = 350;
+                stock = 999999;
+            };
+            class U_O_OfficerUniform_ocamo {
+                displayName = "Officer Uniform [CSAT]";
+                price = 350;
+                stock = 999999;
+            };
+            class U_I_ParadeUniform_01_AAF_F {
+                displayName = "Parade Uniform [AAF]";
+                price = 400;
+                stock = 999999;
+            };
+            class U_O_ParadeUniform_01_CSAT_F {
+                displayName = "Parade Uniform [CSAT]";
+                price = 400;
+                stock = 999999;
+            };
+            class U_I_E_ParadeUniform_01_LDF_F {
+                displayName = "Parade Uniform [LDF]";
+                price = 400;
+                stock = 999999;
+            };
+            class U_B_ParadeUniform_01_US_F {
+                displayName = "Parade Uniform [US]";
+                price = 400;
+                stock = 999999;
+            };
+            class U_C_Paramedic_01_F {
+                displayName = "Paramedic Uniform";
+                price = 200;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Para_2_F {
+                displayName = "Paramilitary Garb 2";
+                price = 250;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Para_3_F {
+                displayName = "Paramilitary Garb 3";
+                price = 250;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Para_5_F {
+                displayName = "Paramilitary Garb 5";
+                price = 250;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Para_4_F {
+                displayName = "Paramilitary Garb 4";
+                price = 250;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Para_1_F {
+                displayName = "Paramilitary Garb 1";
+                price = 250;
+                stock = 999999;
+            };
+            class U_I_pilotCoveralls {
+                displayName = "Pilot Coveralls [AAF]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_O_PilotCoveralls {
+                displayName = "Pilot Coveralls [CSAT]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_B_PilotCoveralls {
+                displayName = "Pilot Coveralls [NATO]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_Rangemaster {
+                displayName = "Rangemaster Suit";
+                price = 150;
+                stock = 999999;
+            };
+            class U_O_SpecopsUniform_ocamo {
+                displayName = "Recon Fatigues";
+                price = 450;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_mcam_vest {
+                displayName = "Recon Combat Uniform";
+                price = 450;
+                stock = 999999;
+            };
+            class U_B_T_Soldier_SL_F {
+                displayName = "Recon Fatigues [NATO]";
+                price = 450;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_vest_mcam_wdl_f {
+                displayName = "Recon Uniform [Woodland]";
+                price = 450;
+                stock = 999999;
+            };
+            class U_C_Scientist {
+                displayName = "Scientist Uniform";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_Uniform_Scientist_01_formal_F {
+                displayName = "Scientist Uniform Formal";
+                price = 250;
+                stock = 999999;
+            };
+            class U_C_Uniform_Scientist_01_F {
+                displayName = "Scientist Uniform 1";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_Uniform_Scientist_02_F {
+                displayName = "Scientist Uniform 2";
+                price = 200;
+                stock = 999999;
+            };
+            class U_C_Uniform_Scientist_02_formal_F {
+                displayName = "Scientist Uniform 2 Formal";
+                price = 250;
+                stock = 999999;
+            };
+            class U_O_V_Soldier_Viper_F {
+                displayName = "Special Purpose Suit [CSAT]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_O_V_Soldier_Viper_hex_F {
+                displayName = "Special Purpose Suit [Hex]";
+                price = 800;
+                stock = 999999;
+            };
+            class U_C_man_sport_1_F {
+                displayName = "Sport Clothes (Blue)";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_man_sport_3_F {
+                displayName = "Sport Clothes (Green)";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_man_sport_2_F {
+                displayName = "Sport Clothes (Red)";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_Man_casual_6_F {
+                displayName = "Summer Clothes 1";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_Man_casual_4_F {
+                displayName = "Summer Clothes 2";
+                price = 100;
+                stock = 999999;
+            };
+            class U_C_Man_casual_5_F {
+                displayName = "Summer Clothes 3";
+                price = 100;
+                stock = 999999;
+            };
+            class U_B_survival_uniform {
+                displayName = "Survival Fatigues";
+                price = 350;
+                stock = 999999;
+            };
+            class U_I_C_Soldier_Camo_F {
+                displayName = "Syndikat Uniform";
+                price = 250;
+                stock = 999999;
+            };
+            class U_Tank_green_F {
+                displayName = "Tanker Suit [AAF]";
+                price = 300;
+                stock = 999999;
+            };
+            class U_O_R_Gorka_01_black_F {
+                displayName = "Tactical Uniform Black";
+                price = 400;
+                stock = 999999;
+            };
+            class U_I_Protagonist_VR {
+                displayName = "VR Suit [AAF]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_O_Protagonist_VR {
+                displayName = "VR Suit [CSAT]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_B_Protagonist_VR {
+                displayName = "VR Suit [NATO]";
+                price = 1000;
+                stock = 999999;
+            };
+            class U_I_Wetsuit {
+                displayName = "Wetsuit [AAF]";
+                price = 600;
+                stock = 999999;
+            };
+            class U_O_Wetsuit {
+                displayName = "Wetsuit [CSAT]";
+                price = 600;
+                stock = 999999;
+            };
+            class U_B_Wetsuit {
+                displayName = "Wetsuit [NATO]";
+                price = 600;
+                stock = 999999;
+            };
+            class U_C_WorkerCoveralls {
+                displayName = "Worker Coveralls";
+                price = 120;
+                stock = 999999;
+            };
+            class U_C_Poor_1 {
+                displayName = "Poor Clothes";
+                price = 50;
+                stock = 999999;
+            };
+            class U_I_G_Story_Protagonist_F {
+                displayName = "Worn Combat Fatigues";
+                price = 200;
+                stock = 999999;
+            };
+            class U_B_CombatUniform_mcam_worn {
+                displayName = "Worn Combat Uniform";
+                price = 200;
+                stock = 999999;
+            };
+        };
+
+        class Backpacks {
+            displayName = "Backpack Shop";
+            kindOf = "Items";
+
+            class B_AssaultPack_blk {
+                displayName = "Black Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_cbr {
+                displayName = "Coyote Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_dgtl {
+                displayName = "Digital Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_eaf_F {
+                displayName = "EAF Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_rgr {
+                displayName = "Ranger Green Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_ocamo {
+                displayName = "Hex Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_khk {
+                displayName = "Khaki Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_mcamo {
+                displayName = "MTP Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_sgg {
+                displayName = "Sage Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_tna_F {
+                displayName = "Tropic Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_AssaultPack_wdl_F {
+                displayName = "Woodland Assault Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_Bergen_dgtl_F {
+                displayName = "Digital Bergen";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Bergen_hex_F {
+                displayName = "Hex Bergen";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Bergen_mcamo_F {
+                displayName = "MTP Bergen";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Bergen_tna_F {
+                displayName = "Tropic Bergen";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Respawn_Sleeping_bag_blue_F {
+                displayName = "Blue Sleeping Bag";
+                price = 100;
+                stock = 999999;
+            };
+            class B_Respawn_Sleeping_bag_brown_F {
+                displayName = "Brown Sleeping Bag";
+                price = 100;
+                stock = 999999;
+            };
+            class B_Respawn_TentDome_F {
+                displayName = "Dome Tent";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Patrol_Respawn_bag_F {
+                displayName = "Patrol Bag";
+                price = 150;
+                stock = 999999;
+            };
+            class B_Respawn_Sleeping_bag_F {
+                displayName = "Sleeping Bag";
+                price = 100;
+                stock = 999999;
+            };
+            class B_Respawn_TentA_F {
+                displayName = "Tent";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Carryall_blk {
+                displayName = "Black Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_cbr {
+                displayName = "Coyote Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_eaf_F {
+                displayName = "EAF Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_ghex_F {
+                displayName = "Green Hex Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_green_F {
+                displayName = "Green Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_ocamo {
+                displayName = "Hex Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_khk {
+                displayName = "Khaki Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_mcamo {
+                displayName = "MTP Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_oli {
+                displayName = "Olive Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_taiga_F {
+                displayName = "Taiga Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_oucamo {
+                displayName = "Urban Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_Carryall_wdl_F {
+                displayName = "Woodland Carryall";
+                price = 400;
+                stock = 999999;
+            };
+            class B_CombinationUnitRespirator_01_F {
+                displayName = "Respirator";
+                price = 250;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Everyday_Astra_F {
+                displayName = "Everyday Astra Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Everyday_Black_F {
+                displayName = "Everyday Black Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Everyday_Vrana_F {
+                displayName = "Everyday Vrana Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Everyday_IDAP_F {
+                displayName = "IDAP Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_FieldPack_blk {
+                displayName = "Black Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_cbr {
+                displayName = "Coyote Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_ghex_F {
+                displayName = "Green Hex Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_green_F {
+                displayName = "Green Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_ocamo {
+                displayName = "Hex Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_khk {
+                displayName = "Khaki Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_oli {
+                displayName = "Olive Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_taiga_F {
+                displayName = "Taiga Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_FieldPack_oucamo {
+                displayName = "Urban Field Pack";
+                price = 250;
+                stock = 999999;
+            };
+            class B_Kitbag_cbr {
+                displayName = "Coyote Kitbag";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Kitbag_rgr {
+                displayName = "Green Kitbag";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Kitbag_mcamo {
+                displayName = "MTP Kitbag";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Kitbag_sgg {
+                displayName = "Sage Kitbag";
+                price = 300;
+                stock = 999999;
+            };
+            class B_Kitbag_tan {
+                displayName = "Tan Kitbag";
+                price = 300;
+                stock = 999999;
+            };
+            class B_LegStrapBag_black_F {
+                displayName = "Black Leg Strap";
+                price = 150;
+                stock = 999999;
+            };
+            class B_LegStrapBag_coyote_F {
+                displayName = "Coyote Leg Strap";
+                price = 150;
+                stock = 999999;
+            };
+            class B_LegStrapBag_olive_F {
+                displayName = "Olive Leg Strap";
+                price = 150;
+                stock = 999999;
+            };
+            class B_Messenger_Black_F {
+                displayName = "Black Messenger";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Messenger_Coyote_F {
+                displayName = "Coyote Messenger";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Messenger_Gray_F {
+                displayName = "Gray Messenger";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Messenger_Olive_F {
+                displayName = "Olive Messenger";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Messenger_IDAP_F {
+                displayName = "IDAP Messenger";
+                price = 200;
+                stock = 999999;
+            };
+            class B_RadioBag_01_black_F {
+                displayName = "Black Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_digi_F {
+                displayName = "Digital Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_eaf_F {
+                displayName = "EAF Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_ghex_F {
+                displayName = "Green Hex Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_hex_F {
+                displayName = "Hex Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_mtp_F {
+                displayName = "MTP Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_tropic_F {
+                displayName = "Tropic Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_oucamo_F {
+                displayName = "Urban Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_RadioBag_01_wdl_F {
+                displayName = "Woodland Radio Pack";
+                price = 350;
+                stock = 999999;
+            };
+            class B_SCBA_01_F {
+                displayName = "SCBA";
+                price = 300;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Sport_Blue_F {
+                displayName = "Blue Sport Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Sport_Green_F {
+                displayName = "Green Sport Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_CivilianBackpack_01_Sport_Red_F {
+                displayName = "Red Sport Pack";
+                price = 200;
+                stock = 999999;
+            };
+            class B_Parachute {
+                displayName = "Parachute";
+                price = 400;
+                stock = 999999;
+            };
+            class B_TacticalPack_blk {
+                displayName = "Black Tactical Pack";
+                price = 300;
+                stock = 999999;
+            };
+            class B_TacticalPack_rgr {
+                displayName = "Green Tactical Pack";
+                price = 300;
+                stock = 999999;
+            };
+            class B_TacticalPack_ocamo {
+                displayName = "Hex Tactical Pack";
+                price = 300;
+                stock = 999999;
+            };
+            class B_TacticalPack_mcamo {
+                displayName = "MTP Tactical Pack";
+                price = 300;
+                stock = 999999;
+            };
+            class B_TacticalPack_oli {
+                displayName = "Olive Tactical Pack";
+                price = 300;
+                stock = 999999;
+            };
+            class I_UAV_06_backpack_F {
+                displayName = "AR-2 Darter Bag [AAF]";
+                price = 1500;
+                stock = 999999;
+            };
+            class O_UAV_06_backpack_F {
+                displayName = "AR-2 Darter Bag [CSAT]";
+                price = 1500;
+                stock = 999999;
+            };
+            class B_UAV_06_backpack_F {
+                displayName = "AR-2 Darter Bag [NATO]";
+                price = 1500;
+                stock = 999999;
+            };
+            class I_UAV_06_medical_backpack_F {
+                displayName = "AR-2 Medical Darter [AAF]";
+                price = 2000;
+                stock = 999999;
+            };
+            class O_UAV_06_medical_backpack_F {
+                displayName = "AR-2 Medical Darter [CSAT]";
+                price = 2000;
+                stock = 999999;
+            };
+            class B_UAV_06_medical_backpack_F {
+                displayName = "AR-2 Medical Darter [NATO]";
+                price = 2000;
+                stock = 999999;
+            };
+            class I_UAV_01_backpack_F {
+                displayName = "AR-2 Darter Bag [AAF]";
+                price = 1500;
+                stock = 999999;
+            };
+            class O_UAV_01_backpack_F {
+                displayName = "AR-2 Darter Bag [CSAT]";
+                price = 1500;
+                stock = 999999;
+            };
+            class B_UAV_01_backpack_F {
+                displayName = "AR-2 Darter Bag [NATO]";
+                price = 1500;
+                stock = 999999;
+            };
+            class C_IDAP_UAV_06_antimine_backpack_F {
+                displayName = "Demining Drone";
+                price = 2500;
+                stock = 999999;
+            };
+            class I_UGV_02_Demining_backpack_F {
+                displayName = "ED-1D Demining [AAF]";
+                price = 3000;
+                stock = 999999;
+            };
+            class O_UGV_02_Demining_backpack_F {
+                displayName = "ED-1D Demining [CSAT]";
+                price = 3000;
+                stock = 999999;
+            };
+            class B_UGV_02_Demining_backpack_F {
+                displayName = "ED-1D Demining [NATO]";
+                price = 3000;
+                stock = 999999;
+            };
+            class I_UGV_02_Science_backpack_F {
+                displayName = "ED-1E Science [AAF]";
+                price = 2500;
+                stock = 999999;
+            };
+            class O_UGV_02_Science_backpack_F {
+                displayName = "ED-1E Science [CSAT]";
+                price = 2500;
+                stock = 999999;
+            };
+            class B_UGV_02_Science_backpack_F {
+                displayName = "ED-1E Science [NATO]";
+                price = 2500;
+                stock = 999999;
+            };
+            class B_AssaultPack_Kerry {
+                displayName = "Kerry's Pack";
+                price = 150;
+                stock = 999999;
+            };
+            class B_ViperHarness_blk_F {
+                displayName = "Black Viper Harness";
+                price = 500;
+                stock = 999999;
+            };
+            class B_ViperHarness_ghex_F {
+                displayName = "Green Hex Viper Harness";
+                price = 500;
+                stock = 999999;
+            };
+            class B_ViperHarness_hex_F {
+                displayName = "Hex Viper Harness";
+                price = 500;
+                stock = 999999;
+            };
+            class B_ViperHarness_khk_F {
+                displayName = "Khaki Viper Harness";
+                price = 500;
+                stock = 999999;
+            };
+            class B_ViperHarness_oli_F {
+                displayName = "Olive Viper Harness";
+                price = 500;
+                stock = 999999;
+            };
+            class B_ViperLightHarness_blk_F {
+                displayName = "Black Light Viper Harness";
+                price = 400;
+                stock = 999999;
+            };
+            class B_ViperLightHarness_ghex_F {
+                displayName = "Green Hex Light Viper Harness";
+                price = 400;
+                stock = 999999;
+            };
+            class B_ViperLightHarness_hex_F {
+                displayName = "Hex Light Viper Harness";
+                price = 400;
+                stock = 999999;
+            };
+            class B_ViperLightHarness_khk_F {
+                displayName = "Khaki Light Viper Harness";
+                price = 400;
+                stock = 999999;
+            };
+            class B_ViperLightHarness_oli_F {
+                displayName = "Olive Light Viper Harness";
+                price = 400;
+                stock = 999999;
+            };
+        };
+
+        class Inventory {
+            displayName = "Inventory Items";
+            kindOf = "Items";
+
+            class ItemMap {
+                displayName = "Map";
+                price = 50;
+                stock = 999999;
+            };
+            class ItemCompass {
+                displayName = "Compass";
+                price = 75;
+                stock = 999999;
+            };
+            class ItemWatch {
+                displayName = "Watch";
+                price = 100;
+                stock = 999999;
+            };
+            class ItemGPS {
+                displayName = "GPS";
+                price = 300;
+                stock = 999999;
+            };
+            class Binocular {
+                displayName = "Binoculars";
+                price = 250;
+                stock = 999999;
+            };
+            class FirstAidKit {
+                displayName = "First Aid Kit";
+                price = 150;
+                stock = 999999;
+            };
+            class Medikit {
+                displayName = "Medikit";
+                price = 500;
+                stock = 999999;
+            };
+            class ToolKit {
+                displayName = "Toolkit";
+                price = 350;
+                stock = 999999;
+            };
+        };
+
+        class Explosives {
+            displayName = "Explosives Shop";
+            kindOf = "Items";
+
+            class TrainingMine_Mag {
+                displayName = "Training Mine";
+                price = 100;
+                stock = 999999;
+            };
+            class IEDUrbanSmall_Remote_Mag {
+                displayName = "Small IED (Urban)";
+                price = 800;
+                stock = 999999;
+            };
+            class IEDLandSmall_Remote_Mag {
+                displayName = "Small IED (Land)";
+                price = 800;
+                stock = 999999;
+            };
+            class SLAMDirectionalMine_Wire_Mag {
+                displayName = "M6 SLAM Mine";
+                price = 1000;
+                stock = 999999;
+            };
+            class IEDUrbanBig_Remote_Mag {
+                displayName = "Large IED (Urban)";
+                price = 1200;
+                stock = 999999;
+            };
+            class IEDLandBig_Remote_Mag {
+                displayName = "Large IED (Land)";
+                price = 1200;
+                stock = 999999;
+            };
+            class SatchelCharge_Remote_Mag {
+                displayName = "Satchel Charge";
+                price = 1500;
+                stock = 999999;
+            };
+            class DemoCharge_Remote_Mag {
+                displayName = "Demo Charge";
+                price = 1000;
+                stock = 999999;
+            };
+            class ClaymoreDirectionalMine_Remote_Mag {
+                displayName = "Claymore Mine";
+                price = 800;
+                stock = 999999;
+            };
+            class ATMine_Range_Mag {
+                displayName = "AT Mine";
+                price = 1200;
+                stock = 999999;
+            };
+            class APERSTripMine_Wire_Mag {
+                displayName = "APERS Tripwire Mine";
+                price = 600;
+                stock = 999999;
+            };
+            class APERSMine_Range_Mag {
+                displayName = "APERS Mine";
+                price = 500;
+                stock = 999999;
+            };
+            class APERSBoundingMine_Range_Mag {
+                displayName = "APERS Bounding Mine";
+                price = 700;
+                stock = 999999;
+            };
+        };
+
+        class Attachments {
+            displayName = "Attachments";
+            kindOf = "Items";
+
+            class acc_flashlight {
+                displayName = "Flashlight";
+                price = 100;
+                stock = 999999;
+            };
+            class acc_flashlight_pistol {
+                displayName = "Pistol Flashlight";
+                price = 75;
+                stock = 999999;
+            };
+            class acc_flashlight_smg_01 {
+                displayName = "SMG Flashlight";
+                price = 85;
+                stock = 999999;
+            };
+            class acc_pointer_IR {
+                displayName = "IR Pointer";
+                price = 150;
+                stock = 999999;
+            };
+            class B_UavTerminal {
+                displayName = "UAV Terminal (NATO)";
+                price = 500;
+                stock = 999999;
+            };
+            class bipod_01_F_blk {
+                displayName = "Bipod Black";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_01_F_khk {
+                displayName = "Bipod Khaki";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_01_F_mtp {
+                displayName = "Bipod MTP";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_01_F_snd {
+                displayName = "Bipod Sand";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_02_F_arid {
+                displayName = "Bipod Arid";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_02_F_blk {
+                displayName = "Bipod Black";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_02_F_hex {
+                displayName = "Bipod Hex";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_02_F_lush {
+                displayName = "Bipod Lush";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_02_F_tan {
+                displayName = "Bipod Tan";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_03_F_blk {
+                displayName = "Bipod Black";
+                price = 150;
+                stock = 999999;
+            };
+            class bipod_03_F_oli {
+                displayName = "Bipod Olive";
+                price = 150;
+                stock = 999999;
+            };
+            class C_UavTerminal {
+                displayName = "UAV Terminal (Civilian)";
+                price = 500;
+                stock = 999999;
+            };
+            class ChemicalDetector_01_base_F {
+                displayName = "Chemical Detector Base";
+                price = 300;
+                stock = 999999;
+            };
+            class ChemicalDetector_01_black_F {
+                displayName = "Chemical Detector Black";
+                price = 300;
+                stock = 999999;
+            };
+            class ChemicalDetector_01_olive_F {
+                displayName = "Chemical Detector Olive";
+                price = 300;
+                stock = 999999;
+            };
+            class ChemicalDetector_01_tan_F {
+                displayName = "Chemical Detector Tan";
+                price = 300;
+                stock = 999999;
+            };
+            class ChemicalDetector_01_watch_F {
+                displayName = "Chemical Detector Watch";
+                price = 300;
+                stock = 999999;
+            };
+            class DroneDetector {
+                displayName = "Drone Detector";
+                price = 400;
+                stock = 999999;
+            };
+            class I_E_UavTerminal {
+                displayName = "UAV Terminal (LDF)";
+                price = 500;
+                stock = 999999;
+            };
+            class I_UavTerminal {
+                displayName = "UAV Terminal (AAF)";
+                price = 500;
+                stock = 999999;
+            };
+            class Integrated_NVG_F {
+                displayName = "Integrated NVG";
+                price = 800;
+                stock = 999999;
+            };
+            class Integrated_NVG_TI_0_F {
+                displayName = "Integrated NVG TI";
+                price = 1000;
+                stock = 999999;
+            };
+            class Integrated_NVG_TI_1_F {
+                displayName = "Integrated NVG TI Enhanced";
+                price = 1200;
+                stock = 999999;
+            };
+            class Item_AntidoteKit_01_F {
+                displayName = "Antidote Kit";
+                price = 200;
+                stock = 999999;
+            };
+            class Item_DeconKit_01_F {
+                displayName = "Decontamination Kit";
+                price = 200;
+                stock = 999999;
+            };
+            class ItemRadio {
+                displayName = "Radio";
+                price = 75;
+                stock = 999999;
+            };
+            class Laserdesignator {
+                displayName = "Laser Designator";
+                price = 1000;
+                stock = 999999;
+            };
+            class Laserdesignator_01_khk_F {
+                displayName = "Laser Designator Khaki";
+                price = 1000;
+                stock = 999999;
+            };
+            class Laserdesignator_02 {
+                displayName = "Laser Designator";
+                price = 1000;
+                stock = 999999;
+            };
+            class Laserdesignator_02_ghex_F {
+                displayName = "Laser Designator Green Hex";
+                price = 1000;
+                stock = 999999;
+            };
+            class Laserdesignator_03 {
+                displayName = "Laser Designator";
+                price = 1000;
+                stock = 999999;
+            };
+            class MineDetector {
+                displayName = "Mine Detector";
+                price = 400;
+                stock = 999999;
+            };
+            class muzzle_antenna_01_f {
+                displayName = "Antenna 1";
+                price = 100;
+                stock = 999999;
+            };
+            class muzzle_antenna_02_f {
+                displayName = "Antenna 2";
+                price = 100;
+                stock = 999999;
+            };
+            class muzzle_antenna_03_f {
+                displayName = "Antenna 3";
+                price = 100;
+                stock = 999999;
+            };
+            class muzzle_snds_338_black {
+                displayName = "Sound Suppressor (.338) Black";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_338_green {
+                displayName = "Sound Suppressor (.338) Green";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_338_sand {
+                displayName = "Sound Suppressor (.338) Sand";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_570 {
+                displayName = "Sound Suppressor 5.7mm";
+                price = 250;
+                stock = 999999;
+            };
+            class muzzle_snds_58_blk_F {
+                displayName = "Sound Suppressor 5.8mm Black";
+                price = 250;
+                stock = 999999;
+            };
+            class muzzle_snds_58_ghex_F {
+                displayName = "Sound Suppressor 5.8mm Green Hex";
+                price = 250;
+                stock = 999999;
+            };
+            class muzzle_snds_58_hex_F {
+                displayName = "Sound Suppressor 5.8mm Hex";
+                price = 250;
+                stock = 999999;
+            };
+            class muzzle_snds_65_TI_blk_F {
+                displayName = "Sound Suppressor 6.5mm Black";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_65_TI_ghex_F {
+                displayName = "Sound Suppressor 6.5mm Green Hex";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_65_TI_hex_F {
+                displayName = "Sound Suppressor 6.5mm Hex";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_93mmg {
+                displayName = "Sound Suppressor 9.3mm";
+                price = 350;
+                stock = 999999;
+            };
+            class muzzle_snds_93mmg_tan {
+                displayName = "Sound Suppressor 9.3mm Tan";
+                price = 350;
+                stock = 999999;
+            };
+            class muzzle_snds_acp {
+                displayName = "Sound Suppressor ACP";
+                price = 200;
+                stock = 999999;
+            };
+            class muzzle_snds_B {
+                displayName = "Sound Suppressor B";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_H {
+                displayName = "Sound Suppressor H";
+                price = 300;
+                stock = 999999;
+            };
+            class muzzle_snds_L {
+                displayName = "Sound Suppressor L";
+                price = 250;
+                stock = 999999;
+            };
+            class muzzle_snds_M {
+                displayName = "Sound Suppressor M";
+                price = 300;
+                stock = 999999;
+            };
+            class NVGoggles_INDEP {
+                displayName = "NV Goggles Independent";
+                price = 800;
+                stock = 999999;
+            };
+            class NVGoggles_OPFOR {
+                displayName = "NV Goggles OPFOR";
+                price = 800;
+                stock = 999999;
+            };
+            class NVGoggles_tna_F {
+                displayName = "NV Goggles Tropic";
+                price = 800;
+                stock = 999999;
+            };
+            class O_NVGoggles_ghex_F {
+                displayName = "NV Goggles Green Hex";
+                price = 800;
+                stock = 999999;
+            };
+            class O_NVGoggles_grn_F {
+                displayName = "NV Goggles Green";
+                price = 800;
+                stock = 999999;
+            };
+            class O_NVGoggles_hex_F {
+                displayName = "NV Goggles Hex";
+                price = 800;
+                stock = 999999;
+            };
+            class O_NVGoggles_urb_F {
+                displayName = "NV Goggles Urban";
+                price = 800;
+                stock = 999999;
+            };
+            class O_UavTerminal {
+                displayName = "UAV Terminal (CSAT)";
+                price = 500;
+                stock = 999999;
+            };
+            class optic_Aco {
+                displayName = "ACO";
+                price = 250;
+                stock = 999999;
+            };
+            class optic_ACO_grn {
+                displayName = "ACO Green";
+                price = 250;
+                stock = 999999;
+            };
+            class optic_ACO_grn_smg {
+                displayName = "ACO SMG Green";
+                price = 250;
+                stock = 999999;
+            };
+            class optic_Aco_smg {
+                displayName = "ACO SMG";
+                price = 250;
+                stock = 999999;
+            };
+            class optic_AMS {
+                displayName = "AMS";
+                price = 400;
+                stock = 999999;
+            };
+            class optic_AMS_khk {
+                displayName = "AMS Khaki";
+                price = 400;
+                stock = 999999;
+            };
+            class optic_AMS_snd {
+                displayName = "AMS Sand";
+                price = 400;
+                stock = 999999;
+            };
+            class optic_Arco {
+                displayName = "ARCO";
+                price = 350;
+                stock = 999999;
+            };
+            class optic_DMS {
+                displayName = "DMS";
+                price = 400;
+                stock = 999999;
+            };
+            class optic_ERCO_blk_F {
+                displayName = "ERCO Black";
+                price = 375;
+                stock = 999999;
+            };
+            class optic_ERCO_khk_F {
+                displayName = "ERCO Khaki";
+                price = 375;
+                stock = 999999;
+            };
+            class optic_ERCO_snd_F {
+                displayName = "ERCO Sand";
+                price = 375;
+                stock = 999999;
+            };
+            class optic_Hamr {
+                displayName = "RCO";
+                price = 400;
+                stock = 999999;
+            };
+            class optic_Holosight {
+                displayName = "Holographic";
+                price = 300;
+                stock = 999999;
+            };
+            class optic_LRPS {
+                displayName = "LRPS";
+                price = 500;
+                stock = 999999;
+            };
+            class optic_MRCO {
+                displayName = "MRCO";
+                price = 375;
+                stock = 999999;
+            };
+            class optic_MRD {
+                displayName = "MRD";
+                price = 200;
+                stock = 999999;
+            };
+            class optic_Nightstalker {
+                displayName = "Nightstalker";
+                price = 1000;
+                stock = 999999;
+            };
+            class optic_NVS {
+                displayName = "NVS";
+                price = 800;
+                stock = 999999;
+            };
+            class optic_SOS {
+                displayName = "SOS";
+                price = 500;
+                stock = 999999;
+            };
+            class optic_tws {
+                displayName = "TWS";
+                price = 1200;
+                stock = 999999;
+            };
+            class optic_tws_mg {
+                displayName = "TWS MG";
+                price = 1200;
+                stock = 999999;
+            };
+            class optic_Yorris {
+                displayName = "Yorris";
+                price = 200;
+                stock = 999999;
+            };
+            class Rangefinder {
+                displayName = "Rangefinder";
+                price = 300;
+                stock = 999999;
+            };
+            class Zasleh2 {
+                displayName = "Flash Suppressor";
+                price = 150;
+                stock = 999999;
+            };
+        };
+    };
+
+    class Vehicles {
+        class NATO {
+            displayName = "NATO Vehicles";
+            kindOf = "Vehicles";
+
+            class B_CTRG_LSV_01_light_F {
+                displayName = "CTRG LSV Light";
+                price = 5000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Van_01_fuel_F {
+                displayName = "Guerilla Fuel Van";
+                price = 3250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Offroad_01_F {
+                displayName = "Guerilla Offroad";
+                price = 1250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Offroad_01_AT_F {
+                displayName = "Guerilla Offroad AT";
+                price = 4500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Offroad_01_armed_F {
+                displayName = "Guerilla Armed Offroad";
+                price = 4000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Offroad_01_repair_F {
+                displayName = "Guerilla Repair Offroad";
+                price = 3500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Quadbike_01_F {
+                displayName = "Guerilla Quadbike";
+                price = 750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Van_01_transport_F {
+                displayName = "Guerilla Transport Van";
+                price = 3000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Van_02_vehicle_F {
+                displayName = "Guerilla Van";
+                price = 3500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_G_Van_02_transport_F {
+                displayName = "Guerilla Transport Van II";
+                price = 3250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_mover_F {
+                displayName = "HEMTT Mover";
+                price = 7500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_ammo_F {
+                displayName = "HEMTT Ammo";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_box_F {
+                displayName = "HEMTT Box";
+                price = 8000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_cargo_F {
+                displayName = "HEMTT Cargo";
+                price = 8000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_flatbed_F {
+                displayName = "HEMTT Flatbed";
+                price = 7750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_fuel_F {
+                displayName = "HEMTT Fuel";
+                price = 8250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_medical_F {
+                displayName = "HEMTT Medical";
+                price = 8000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_Repair_F {
+                displayName = "HEMTT Repair";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_transport_F {
+                displayName = "HEMTT Transport";
+                price = 7500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Truck_01_covered_F {
+                displayName = "HEMTT Covered";
+                price = 7750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_MRAP_01_F {
+                displayName = "Hunter";
+                price = 6000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_MRAP_01_gmg_F {
+                displayName = "Hunter GMG";
+                price = 9500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_LSV_01_AT_F {
+                displayName = "Prowler AT";
+                price = 9000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_LSV_01_armed_F {
+                displayName = "Prowler Armed";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_Quadbike_01_F {
+                displayName = "Military Quad";
+                price = 7500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_APC_Wheeled_01_cannon_F {
+                displayName = "AMV-7 Marshall";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_APC_Tracked_01_CRV_F {
+                displayName = "CRV-6e Bobcat";
+                price = 16000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_APC_Tracked_01_rcws_F {
+                displayName = "IFV-6c Panther";
+                price = 17000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_AFV_Wheeled_01_cannon_F {
+                displayName = "Rhino MGS";
+                price = 18000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_AFV_Wheeled_01_up_cannon_F {
+                displayName = "Rhino MGS UP";
+                price = 20000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_MBT_01_arty_F {
+                displayName = "M4 Scorcher";
+                price = 25000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_MBT_01_mlrs_F {
+                displayName = "M5 Sandstorm";
+                price = 27000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_T_UGV_01_olive_F {
+                displayName = "UGV Stomper";
+                price = 10000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_T_UGV_01_rcws_olive_F {
+                displayName = "UGV Stomper RCWS";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_MBT_01_cannon_F {
+                displayName = "M2A1 Slammer";
+                price = 22000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_APC_Tracked_01_AA_F {
+                displayName = "Cheetah AA";
+                price = 18000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class B_MBT_01_TUSK_F {
+                displayName = "M2A4 Slammer UP";
+                price = 24000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+        };
+
+        class CSAT {
+            displayName = "CSAT Vehicles";
+            kindOf = "Vehicles";
+
+            class O_MRAP_02_F {
+                displayName = "Ifrit";
+                price = 6000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_MRAP_02_gmg_F {
+                displayName = "Ifrit GMG";
+                price = 9500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_MRAP_02_hmg_F {
+                displayName = "Ifrit HMG";
+                price = 9250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_LSV_02_AT_F {
+                displayName = "Qilin AT";
+                price = 9000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_LSV_02_armed_F {
+                displayName = "Qilin Armed";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_LSV_02_unarmed_F {
+                displayName = "Qilin";
+                price = 5000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_LSV_02_armed_F {
+                displayName = "Qilin Armed (Hex)";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_LSV_02_unarmed_F {
+                displayName = "Qilin (Hex)";
+                price = 5000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_LSV_02_AT_F {
+                displayName = "Qilin AT (Hex)";
+                price = 9000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_02_covered_F {
+                displayName = "Zamak Covered";
+                price = 7250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_02_transport_F {
+                displayName = "Zamak Transport";
+                price = 7000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_02_box_F {
+                displayName = "Zamak Box";
+                price = 7250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_02_medical_F {
+                displayName = "Zamak Medical";
+                price = 7500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_02_Ammo_F {
+                displayName = "Zamak Ammo";
+                price = 8000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_02_fuel_F {
+                displayName = "Zamak Fuel";
+                price = 7750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_transport_F {
+                displayName = "Tempest Transport";
+                price = 7500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_covered_F {
+                displayName = "Tempest Covered";
+                price = 7750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_repair_F {
+                displayName = "Tempest Repair";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_ammo_F {
+                displayName = "Tempest Ammo";
+                price = 8500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_fuel_F {
+                displayName = "Tempest Fuel";
+                price = 8250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_medical_F {
+                displayName = "Tempest Medical";
+                price = 8000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_Truck_03_device_F {
+                displayName = "Tempest Device";
+                price = 9000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_APC_Tracked_02_cannon_F {
+                displayName = "BTR-K Kamysh";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_APC_Tracked_02_AA_F {
+                displayName = "ZSU-39 Tigris";
+                price = 17000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_APC_Wheeled_02_rcws_v2_F {
+                displayName = "MSE-3 Marid";
+                price = 14000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_MBT_02_cannon_F {
+                displayName = "T-100 Varsuk";
+                price = 22000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_MBT_04_cannon_F {
+                displayName = "T-140 Angara";
+                price = 24000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_MBT_04_command_F {
+                displayName = "T-140K Angara";
+                price = 26000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_APC_Tracked_02_cannon_ghex_F {
+                displayName = "BTR-K Kamysh (Green Hex)";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_APC_Wheeled_02_rcws_v2_ghex_F {
+                displayName = "MSE-3 Marid (Green Hex)";
+                price = 14000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_MBT_02_cannon_ghex_F {
+                displayName = "T-100 Varsuk (Green Hex)";
+                price = 22000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_MBT_04_cannon_F {
+                displayName = "T-140 Angara (Green Hex)";
+                price = 24000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_T_MBT_04_command_F {
+                displayName = "T-140K Angara (Green Hex)";
+                price = 26000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_UGV_01_F {
+                displayName = "UGV Saif";
+                price = 10000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_UGV_01_rcws_F {
+                displayName = "UGV Saif RCWS";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Offroad_01_F {
+                displayName = "CSAT Offroad";
+                price = 1250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Offroad_01_armed_F {
+                displayName = "CSAT Armed Offroad";
+                price = 4000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Offroad_01_AT_F {
+                displayName = "CSAT Offroad AT";
+                price = 4500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Van_01_transport_F {
+                displayName = "CSAT Transport Van";
+                price = 3000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Van_02_vehicle_F {
+                displayName = "CSAT Van";
+                price = 3500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Van_02_transport_F {
+                displayName = "CSAT Transport Van II";
+                price = 3250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class O_G_Quadbike_01_F {
+                displayName = "CSAT Quadbike";
+                price = 750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+        };
+
+        class AAF {
+            displayName = "AAF/Guer Vehicles";
+            kindOf = "Vehicles";
+
+            class I_MRAP_03_F {
+                displayName = "Strider";
+                price = 6000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_MRAP_03_hmg_F {
+                displayName = "Strider HMG";
+                price = 9250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_MRAP_03_gmg_F {
+                displayName = "Strider GMG";
+                price = 9500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_APC_tracked_03_cannon_F {
+                displayName = "FV-720 Mora";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_APC_Wheeled_03_cannon_F {
+                displayName = "AFV-4 Gorgon";
+                price = 14000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_LT_01_AA_F {
+                displayName = "AWC 302 Nyx AA";
+                price = 17000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_LT_01_AT_F {
+                displayName = "AWC 302 Nyx AT";
+                price = 16000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_LT_01_cannon_F {
+                displayName = "AWC 302 Nyx Cannon";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_LT_01_scout_F {
+                displayName = "AWC 302 Nyx Scout";
+                price = 14000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_MBT_03_cannon_F {
+                displayName = "MBT-52 Kuma";
+                price = 22000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_UGV_01_F {
+                displayName = "UGV Stomper";
+                price = 10000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_UGV_01_rcws_F {
+                displayName = "UGV Stomper RCWS";
+                price = 15000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_Truck_02_covered_F {
+                displayName = "Zamak Covered";
+                price = 7250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_Truck_02_transport_F {
+                displayName = "Zamak Transport";
+                price = 7000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_Truck_02_box_F {
+                displayName = "Zamak Box";
+                price = 7250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_Truck_02_medical_F {
+                displayName = "Zamak Medical";
+                price = 7500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_Truck_02_ammo_F {
+                displayName = "Zamak Ammo";
+                price = 8000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_Truck_02_fuel_F {
+                displayName = "Zamak Fuel";
+                price = 7750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Offroad_01_F {
+                displayName = "AAF Offroad";
+                price = 1250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Offroad_01_armed_F {
+                displayName = "AAF Armed Offroad";
+                price = 4000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Offroad_01_AT_F {
+                displayName = "AAF Offroad AT";
+                price = 4500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Van_01_transport_F {
+                displayName = "AAF Transport Van";
+                price = 3000;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Van_02_vehicle_F {
+                displayName = "AAF Van";
+                price = 3500;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Van_02_transport_F {
+                displayName = "AAF Transport Van II";
+                price = 3250;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+            class I_G_Quadbike_01_F {
+                displayName = "AAF Quadbike";
+                price = 750;
+                stock = 999999;
+                spawnEmpty = true;
+            };
+        };
+    };
+};
